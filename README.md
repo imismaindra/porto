@@ -167,3 +167,23 @@ Tambahkan Google Analytics atau Umami ke dalam `<head>` tag di `index.html`
 
 ---
 **Happy coding! 🎉**
+
+## Deploy ke Vercel
+
+Project ini sudah siap deploy sebagai static site menggunakan file `vercel.json`.
+
+### Opsi 1: Deploy dari Git (disarankan)
+1. Push project ini ke GitHub/GitLab/Bitbucket.
+2. Masuk ke Vercel dan pilih **Add New -> Project**.
+3. Import repository ini.
+4. Klik **Deploy** (konfigurasi sudah dibaca dari `vercel.json`).
+
+### Opsi 2: Deploy via CLI
+1. Jalankan `npx vercel`.
+2. Ikuti prompt sampai deployment preview selesai.
+3. Untuk production, jalankan `npx vercel --prod`.
+
+### Catatan konfigurasi
+- `framework: null` -> diperlakukan sebagai proyek non-framework (static).
+- `buildCommand: null` -> tidak ada proses build.
+- `outputDirectory: "."` -> file di root proyek langsung dipublish.
