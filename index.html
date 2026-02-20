@@ -1,18 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio profesional saya">
-    <title>Portfolio - Nama Anda</title>
+    <meta name="description" content="Portfolio Ahmad Maulana Ismaindra - Web Developer">
+    <title>Portfolio - Ahmad Maulana Ismaindra</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-wrapper">
@@ -20,8 +19,10 @@
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link">Beranda</a></li>
                     <li><a href="#about" class="nav-link">Tentang</a></li>
+                    <li><a href="#experience" class="nav-link">Pengalaman</a></li>
+                    <li><a href="#education" class="nav-link">Pendidikan</a></li>
+                    <li><a href="#certifications" class="nav-link">Sertifikat</a></li>
                     <li><a href="#projects" class="nav-link">Proyek</a></li>
-                    <li><a href="#skills" class="nav-link">Keahlian</a></li>
                     <li><a href="#contact" class="nav-link">Kontak</a></li>
                 </ul>
                 <div class="hamburger">
@@ -33,158 +34,319 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="container">
+        <div class="container hero-layout">
             <div class="hero-content">
-                <h1>Halo, Saya <span class="highlight">Nama Anda</span></h1>
-                <p class="subtitle">Seorang Web Developer & Designer</p>
-                <p class="description">Saya membuat website yang indah dan fungsional untuk bisnis Anda</p>
+                <span class="hero-pill">Open to Work</span>
+                <h1>Hi, saya <span class="highlight">Ahmad Maulana Ismaindra</span> web developer yang fokus pada aplikasi web yang efisien dan responsif.</h1>
+                <p class="subtitle">Web Developer • Asisten Laboratorium ITATS</p>
+                <p class="description">Mahasiswa Teknik Informatika ITATS dengan pengalaman profesional membangun sistem web menggunakan ASP.NET, PHP, Laravel, JavaScript, dan MySQL.</p>
                 <div class="cta-buttons">
                     <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
                     <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
                 </div>
+                <div class="hero-quick-stats">
+                    <div class="quick-item">
+                        <strong>1.5+ Tahun</strong>
+                        <span>Pengalaman profesional</span>
+                    </div>
+                    <div class="quick-item">
+                        <strong>1</strong>
+                        <span>Sertifikasi aktif</span>
+                    </div>
+                    <div class="quick-item">
+                        <strong>4</strong>
+                        <span>Peran pengalaman</span>
+                    </div>
+                </div>
             </div>
-            <div class="hero-image">
-                <div class="image-placeholder">Foto Anda</div>
+            <div class="hero-media">
+                <div class="image-placeholder">
+                    <img src="images/profile3.png" alt="Foto profil Ahmad Maulana Ismaindra" class="profile-photo">
+                </div>
+                <div class="hero-note">
+                    <i class="fas fa-location-dot"></i>
+                    <span>Panderejo, Kecamatan Gempol, Kabupaten Pasuruan 67155.</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about section-muted">
         <div class="container">
-            <h2>Tentang Saya</h2>
-            <div class="about-content">
-                <div class="about-text">
+            <div class="section-head">
+                <p class="section-kicker">Profil</p>
+                <h2>Tentang Saya</h2>
+                <p>Ringkasan singkat tentang latar belakang, fokus teknis, dan pengembangan karier saya.</p>
+            </div>
+
+            <div class="about-layout">
+                <div class="about-text card">
                     <p>
-                        Saya adalah seorang web developer berpengalaman dengan passion dalam menciptakan pengalaman digital yang luar biasa. 
-                        Dengan keahlian di berbagai teknologi modern, saya siap membantu mewujudkan visi Anda menjadi kenyataan.
+                        Saya adalah mahasiswa Teknik Informatika dari Institut Teknologi Adhi Tama Surabaya yang aktif sebagai Asisten
+                        Laboratorium untuk praktikum Pemrograman Terstruktur (C++) dan Struktur Data.
                     </p>
                     <p>
-                        Saya memiliki pengalaman lebih dari X tahun dalam industri, bekerja dengan klien-klien dari berbagai industri dan ukuran.
+                        Saya memiliki pengalaman mengembangkan proyek web menggunakan PHP, Laravel, JavaScript, MySQL, serta framework
+                        Serenity (ASP.NET). Saat ini saya ingin terus mengembangkan kemampuan melalui kesempatan profesional dan kolaborasi tim.
                     </p>
                 </div>
                 <div class="about-stats">
-                    <div class="stat">
-                        <h3>50+</h3>
-                        <p>Proyek Selesai</p>
+                    <div class="stat card">
+                        <h3>2021</h3>
+                        <p>Mulai pengalaman industri</p>
                     </div>
-                    <div class="stat">
-                        <h3>30+</h3>
-                        <p>Klien Puas</p>
+                    <div class="stat card">
+                        <h3>2024</h3>
+                        <p>Asisten Lab ITATS</p>
                     </div>
-                    <div class="stat">
+                    <div class="stat card">
                         <h3>5+</h3>
-                        <p>Tahun Pengalaman</p>
+                        <p>Teknologi inti dikuasai</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <section id="experience" class="experience">
         <div class="container">
-            <h2>Proyek Terbaru</h2>
+            <div class="section-head">
+                <p class="section-kicker">Karier</p>
+                <h2>Pengalaman</h2>
+                <p>Perjalanan kerja profesional saya dalam membangun dan mengembangkan produk digital.</p>
+            </div>
+
+            <div class="timeline">
+                <article class="timeline-item card">
+                    <div class="timeline-meta">
+                        <span>Januari 2022 - Oktober 2023</span>
+                        <strong>Web Developer (Pegawai Tetap)</strong>
+                        <div class="company-brand">
+                            <img src="images/pt-universal-big-data.svg" alt="Logo PT Universal Big Data" class="company-logo">
+                            <p>PT Universal Big Data - Tasikmadu, Malang</p>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Mengembangkan sistem informasi manajemen masjid melalui masjidina.com berbasis Serenity Framework (ASP.NET).</p>
+                        <ul>
+                            <li>Membuat modul kegiatan, donasi, laporan keuangan, dan dashboard admin interaktif.</li>
+                            <li>Menulis script SQL untuk reporting dan integrasi data.</li>
+                            <li>Menguatkan kemampuan C#, TypeScript, jQuery, dan SQL Server.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="timeline-item card">
+                    <div class="timeline-meta">
+                        <span>Juni 2021 - Desember 2021</span>
+                        <strong>WordPress & ChatBot Developer (Magang)</strong>
+                        <div class="company-brand">
+                            <img src="images/pt-universal-big-data.svg" alt="Logo PT Universal Big Data" class="company-logo">
+                            <p>PT Universal Big Data - Tasikmadu, Malang</p>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Mengembangkan AI Chatbot untuk pemesanan restoran dan mendukung pengembangan web WordPress untuk produk perusahaan.</p>
+                        <ul>
+                            <li>Menggunakan DialogFlow, Manychat, dan Botpress dalam pengembangan chatbot.</li>
+                            <li>Membuat video tutorial teknis menggunakan Camtasia.</li>
+                            <li>Berkontribusi pada website LINK.ID Marketplace dan eNotaris.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="timeline-item card">
+                    <div class="timeline-meta">
+                        <span>2024 - Sekarang</span>
+                        <strong>Asisten Laboratorium</strong>
+                        <p>Lab Bahasa Pemrograman ITATS - Surabaya</p>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Membimbing mahasiswa pada praktikum Pemrograman Terstruktur dan Struktur Data.</p>
+                        <ul>
+                            <li>Menjelaskan konsep algoritma, problem solving, dan implementasi C++.</li>
+                            <li>Memberikan asistensi selama praktik dan membantu evaluasi tugas/ujian.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="timeline-item card">
+                    <div class="timeline-meta">
+                        <span>2023 - Sekarang</span>
+                        <strong>Anggota Divisi Kewirausahaan</strong>
+                        <p>Himpunan Mahasiswa Teknik Informatika (HMIF) - Surabaya</p>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Berkontribusi dalam operasional dan kegiatan kewirausahaan internal organisasi.</p>
+                        <ul>
+                            <li>Bertanggung jawab atas penjualan merchandise resmi himpunan.</li>
+                            <li>Mengelola distribusi dan penjualan PDH jurusan serta PDH himpunan.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education section-muted">
+        <div class="container">
+            <div class="section-head">
+                <p class="section-kicker">Akademik</p>
+                <h2>Pendidikan</h2>
+                <p>Latar belakang pendidikan yang membentuk fondasi teknis dan analitis saya.</p>
+            </div>
+
+            <div class="edu-grid">
+                <article class="edu-card card">
+                    <span class="edu-year">Sedang Berjalan</span>
+                    <h3>S1 Teknik Informatika</h3>
+                    <p>Institut Teknologi Adhi Tama Surabaya (ITATS)</p>
+                    <small>Aktif sebagai mahasiswa dan asisten laboratorium pemrograman.</small>
+                </article>
+                <article class="edu-card card">
+                    <span class="edu-year">2019 - 2022</span>
+                    <h3>SMK Rekayasa Perangkat Lunak (RPL)</h3>
+                    <p>SMK Negeri 1 Bangil</p>
+                    <small>Bangil, Pasuruan - fondasi dasar pemrograman dan pengembangan web.</small>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <div class="section-head">
+                <p class="section-kicker">Validasi Skill</p>
+                <h2>Sertifikat</h2>
+                <p>Sertifikasi yang relevan dengan pengembangan web modern dan workflow profesional.</p>
+            </div>
+
+            <div class="cert-grid">
+                <article class="cert-card card">
+                    <div>
+                        <h3>Belajar Dasar Pemrograman JavaScript</h3>
+                        <p>Dicoding Indonesia</p>
+                        <p>Diterbitkan Sep 2025 · Kedaluwarsa Sep 2028</p>
+                        <p>ID Kredensial: 1RXYQ66WQZVM</p>
+                    </div>
+                    <span>2025</span>
+                </article>
+                <article class="cert-card card">
+                    <div>
+                        <h3>Belajar Dasar Pemrograman Web</h3>
+                        <p>Dicoding Indonesia</p>
+                        <p>Diterbitkan Sep 2024 · Kedaluwarsa Sep 2027</p>
+                        <p>ID Kredensial: 53XEOVQOYZRN</p>
+                    </div>
+                    <span>2024</span>
+                </article>
+                <article class="cert-card card">
+                    <div>
+                        <h3>Belajar Dasar Visualisasi Data</h3>
+                        <p>Dicoding Indonesia</p>
+                        <p>Diterbitkan Jun 2024 · Kedaluwarsa Jun 2027</p>
+                        <p>ID Kredensial: 07Z6044DRZQR</p>
+                    </div>
+                    <span>2024</span>
+                </article>
+                <article class="cert-card card">
+                    <div>
+                        <h3>Junior Web Developer (Vocational School Graduate Academy)</h3>
+                        <p>Digital Talent Scholarship</p>
+                        <p>Diterbitkan Jul 2025 · Kedaluwarsa Sep 2028</p>
+                        <p>ID Kredensial: 193106961160-4</p>
+                    </div>
+                    <span>2025</span>
+                </article>
+                <article class="cert-card card">
+                    <div>
+                        <h3>Mindset Digital (Micro Skill)</h3>
+                        <p>Digital Talent Scholarship</p>
+                        <p>Diterbitkan Jul 2025 · Kedaluwarsa Jul 2030</p>
+                        <p>ID Kredensial: 2299815850-4130/MS/BLSDM.Komdigi/2025</p>
+                    </div>
+                    <span>2025</span>
+                </article>
+            </div>
+            <div class="cert-more">
+                <a href="https://www.linkedin.com/in/ismaindra/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    Lihat Sertifikasi Lengkap di LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects section-muted">
+        <div class="container">
+            <div class="section-head">
+                <p class="section-kicker">Portfolio</p>
+                <h2>Proyek Terbaru</h2>
+                <p>Contoh implementasi nyata yang saya bangun dari sisi visual, performa, dan pengalaman pengguna.</p>
+            </div>
+
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project1.jpg" alt="Proyek 1">
+                <article class="project-card card">
+                    <div class="project-image project-bg-1">
+                        <span>Masjidina.com</span>
                     </div>
                     <div class="project-info">
-                        <h3>Nama Proyek 1</h3>
-                        <p>Deskripsi singkat tentang proyek ini</p>
+                        <h3>Sistem Informasi Manajemen Masjid</h3>
+                        <p>Pengembangan modul kegiatan, donasi, laporan keuangan, dan dashboard admin interaktif berbasis Serenity Framework.</p>
                         <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
+                            <span class="tag">ASP.NET</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">SQL Server</span>
                         </div>
                         <a href="#" class="project-link">Lihat Proyek</a>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project2.jpg" alt="Proyek 2">
+                <article class="project-card card">
+                    <div class="project-image project-bg-2">
+                        <span>AI Restaurant ChatBot</span>
                     </div>
                     <div class="project-info">
-                        <h3>Nama Proyek 2</h3>
-                        <p>Deskripsi singkat tentang proyek ini</p>
+                        <h3>Chatbot Pemesanan Restoran</h3>
+                        <p>Pengembangan chatbot untuk alur pemesanan restoran dengan integrasi platform percakapan populer.</p>
                         <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
+                            <span class="tag">DialogFlow</span>
+                            <span class="tag">Manychat</span>
+                            <span class="tag">Botpress</span>
                         </div>
                         <a href="#" class="project-link">Lihat Proyek</a>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project3.jpg" alt="Proyek 3">
+                <article class="project-card card">
+                    <div class="project-image project-bg-3">
+                        <span>WordPress Project</span>
                     </div>
                     <div class="project-info">
-                        <h3>Nama Proyek 3</h3>
-                        <p>Deskripsi singkat tentang proyek ini</p>
+                        <h3>LINK.ID & eNotaris</h3>
+                        <p>Berkontribusi dalam pengembangan website WordPress untuk proyek marketplace dan layanan legal digital.</p>
                         <div class="project-tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Firebase</span>
+                            <span class="tag">WordPress</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">MySQL</span>
                         </div>
                         <a href="#" class="project-link">Lihat Proyek</a>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2>Keahlian</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <ul class="skill-list">
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>JavaScript</li>
-                        <li>React</li>
-                        <li>Vue.js</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <ul class="skill-list">
-                        <li>Node.js</li>
-                        <li>PHP</li>
-                        <li>Python</li>
-                        <li>Express.js</li>
-                        <li>Laravel</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Database & Tools</h3>
-                    <ul class="skill-list">
-                        <li>MongoDB</li>
-                        <li>MySQL</li>
-                        <li>Git</li>
-                        <li>Docker</li>
-                        <li>VS Code</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Hubungi Saya</h2>
-            <p class="contact-intro">Tertarik untuk berkolaborasi? Hubungi saya melalui form di bawah atau media sosial.</p>
-            
+            <div class="section-head">
+                <p class="section-kicker">Kolaborasi</p>
+                <h2>Hubungi Saya</h2>
+                <p>Jika kamu punya ide proyek, saya siap membantu dari tahap konsep sampai live.</p>
+            </div>
+
             <div class="contact-wrapper">
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form card" id="contactForm">
                     <div class="form-group">
                         <input type="text" placeholder="Nama Anda" required>
                     </div>
@@ -200,43 +362,40 @@
                     <button type="submit" class="btn btn-primary">Kirim Pesan</button>
                 </form>
 
-                <div class="contact-info">
+                <div class="contact-info card">
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
-                            <p>email@anda.com</p>
+                            <p>imismaindra@gmail.com</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
                         <div>
                             <h4>Telepon</h4>
-                            <p>+62 XXX-XXXX-XXXX</p>
+                            <p>085173329189</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h4>Lokasi</h4>
-                            <p>Kota, Indonesia</p>
+                            <p>Panderejo, Gempol, Pasuruan</p>
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/ismaindra" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://imismaindra.github.io" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Portfolio Anda. Semua hak dilindungi.</p>
+            <p>&copy; 2026 Ahmad Maulana Ismaindra. Semua hak dilindungi.</p>
         </div>
     </footer>
 

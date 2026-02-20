@@ -1,5 +1,4 @@
-﻿// Modern portfolio interactions with subtle animation
-const navbar = document.querySelector('.navbar');
+﻿const navbar = document.querySelector('.navbar');
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -24,7 +23,6 @@ if (hamburger && navMenu) {
     });
 }
 
-// Smooth scroll for in-page links with navbar offset
 const stickyOffset = () => (navbar ? navbar.offsetHeight + 8 : 0);
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -49,7 +47,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     });
 });
 
-// Form behavior
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', (event) => {
@@ -59,24 +56,21 @@ if (contactForm) {
     });
 }
 
-// Subtle reveal animation
-const heroReveal = document.querySelectorAll('.hero-content, .hero-image');
+const heroReveal = document.querySelectorAll('.hero-content, .hero-media');
 heroReveal.forEach((item) => {
     item.classList.add('reveal', 'is-visible');
 });
 
 const revealTargets = [
-    '.about h2',
-    '.about-text',
-    '.about-stats .stat',
-    '.projects h2',
+    '.section-head',
+    '.quick-item',
+    '.about-layout .card',
+    '.timeline-item',
+    '.edu-card',
+    '.cert-card',
     '.project-card',
-    '.skills h2',
-    '.skill-category',
-    '.contact h2',
-    '.contact-intro',
-    '.contact-form',
-    '.contact-info .info-item'
+    '.contact-wrapper .card',
+    '.hero-note'
 ];
 
 const revealElements = [];
@@ -101,8 +95,8 @@ if ('IntersectionObserver' in window) {
             });
         },
         {
-            threshold: 0.18,
-            rootMargin: '0px 0px -60px 0px'
+            threshold: 0.16,
+            rootMargin: '0px 0px -64px 0px'
         }
     );
 
@@ -111,7 +105,6 @@ if ('IntersectionObserver' in window) {
     revealElements.forEach((element) => element.classList.add('is-visible'));
 }
 
-// Navbar state and active link on scroll
 const sections = Array.from(document.querySelectorAll('section[id]'));
 
 function updateScrollUI() {
@@ -156,20 +149,3 @@ window.addEventListener('scroll', () => {
 
 window.addEventListener('resize', closeMenu);
 updateScrollUI();
-
-// Image fade-in
-const projectImages = document.querySelectorAll('.project-image img');
-projectImages.forEach((image) => {
-    image.style.opacity = '0';
-    image.style.transition = 'opacity 420ms ease, transform 420ms ease';
-
-    const showImage = () => {
-        image.style.opacity = '1';
-    };
-
-    if (image.complete) {
-        showImage();
-    } else {
-        image.addEventListener('load', showImage, { once: true });
-    }
-});
