@@ -267,8 +267,9 @@ a {
 }
 
 .hero-content h1 {
-    font-size: clamp(2.2rem, 5.8vw, 4.1rem);
-    max-width: 16ch;
+    font-size: clamp(1.95rem, 4.8vw, 3.35rem);
+    max-width: 13ch;
+    line-height: 1.08;
     margin-bottom: 1rem;
 }
 
@@ -283,7 +284,7 @@ a {
 }
 
 .hero .description {
-    max-width: 52ch;
+    max-width: 44ch;
     color: var(--text-soft);
     margin-bottom: 1.8rem;
 }
@@ -500,8 +501,8 @@ a {
 }
 
 .company-logo {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
     border-radius: 8px;
     border: 1px solid var(--line);
     object-fit: cover;
@@ -564,6 +565,35 @@ a {
     margin-bottom: 0.45rem;
 }
 
+.edu-school {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.45rem;
+}
+
+.edu-logo {
+    flex-shrink: 0;
+    display: block;
+    object-fit: contain;
+}
+
+.edu-logo-itats {
+    width: 98px;
+    height: 40px;
+}
+
+.edu-logo-smk {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+}
+
+.edu-school p {
+    margin: 0;
+}
+
 .edu-card small {
     color: #64748b;
     font-size: 0.84rem;
@@ -573,48 +603,105 @@ a {
 .cert-grid {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .cert-more {
-    margin-top: 1rem;
+    margin-top: 1.2rem;
     display: flex;
     justify-content: center;
 }
 
 .cert-card {
-    padding: 1rem 1.05rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 0.8rem;
-    align-items: flex-start;
-    transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+    position: relative;
+    overflow: hidden;
+    min-height: 225px;
+    padding: 1.05rem 1.05rem 1rem;
+    transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease), background-color var(--ease);
+}
+
+.cert-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #2f6fe4, #70a2ff);
+}
+
+.cert-card[data-provider="dts"]::before {
+    background: linear-gradient(90deg, #2f6fe4, #37a2ff);
 }
 
 .cert-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-sm);
-    border-color: var(--line-strong);
+    border-color: rgba(47, 111, 228, 0.28);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .cert-card h3 {
-    font-size: 1rem;
-    margin-bottom: 0.18rem;
+    font-size: 1.03rem;
+    margin-bottom: 0.6rem;
+    max-width: calc(100% - 74px);
 }
 
 .cert-card p {
     color: var(--text-soft);
     font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+}
+
+.cert-card .cert-issuer {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent-deep);
+    background: var(--accent-pale);
+    border: 1px solid rgba(47, 111, 228, 0.2);
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+    margin-bottom: 0.62rem;
+}
+
+.cert-card .cert-issuer::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(47, 111, 228, 0.15);
+}
+
+.cert-card .cert-date {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.cert-card .cert-id {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    border-top: 1px dashed rgba(15, 30, 48, 0.18);
+    padding-top: 0.5rem;
+    font-family: "Consolas", "Courier New", monospace;
+    color: #334155;
+    word-break: break-word;
 }
 
 .cert-card span {
+    position: absolute;
+    right: 0.95rem;
+    top: 0.95rem;
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--accent-deep);
     background: var(--accent-pale);
     border: 1px solid rgba(47, 111, 228, 0.22);
     border-radius: 999px;
-    padding: 0.2rem 0.5rem;
+    padding: 0.22rem 0.56rem;
     white-space: nowrap;
 }
 
@@ -891,6 +978,10 @@ a {
     .edu-grid {
         grid-template-columns: 1fr;
     }
+
+    .cert-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 860px) {
@@ -963,6 +1054,19 @@ a {
 
     .project-image {
         height: 155px;
+    }
+
+    .edu-logo-itats {
+        width: 84px;
+        height: 34px;
+    }
+
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cert-card {
+        min-height: 0;
     }
 }
 
