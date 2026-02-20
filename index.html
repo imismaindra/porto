@@ -297,54 +297,132 @@
                 <p>Contoh implementasi nyata yang saya bangun dari sisi visual, performa, dan pengalaman pengguna.</p>
             </div>
 
-            <div class="projects-grid">
-                <article class="project-card card">
-                    <div class="project-image project-bg-1">
-                        <span>Masjidina.com</span>
-                    </div>
-                    <div class="project-info">
-                        <h3>Sistem Informasi Manajemen Masjid</h3>
-                        <p>Pengembangan modul kegiatan, donasi, laporan keuangan, dan dashboard admin interaktif berbasis Serenity Framework.</p>
-                        <div class="project-tags">
-                            <span class="tag">ASP.NET</span>
-                            <span class="tag">C#</span>
-                            <span class="tag">SQL Server</span>
-                        </div>
-                        <a href="#" class="project-link">Lihat Proyek</a>
-                    </div>
-                </article>
+            <div class="project-tabs" role="tablist" aria-label="Filter kategori proyek">
+                <button type="button" id="project-tab-web" class="project-tab is-active" role="tab" aria-controls="web-panel" aria-selected="true" data-tab-target="web-panel">Web</button>
+                <button type="button" id="project-tab-app" class="project-tab" role="tab" aria-controls="app-panel" aria-selected="false" data-tab-target="app-panel">Aplikasi</button>
+            </div>
 
-                <article class="project-card card">
-                    <div class="project-image project-bg-2">
-                        <span>AI Restaurant ChatBot</span>
-                    </div>
-                    <div class="project-info">
-                        <h3>Chatbot Pemesanan Restoran</h3>
-                        <p>Pengembangan chatbot untuk alur pemesanan restoran dengan integrasi platform percakapan populer.</p>
-                        <div class="project-tags">
-                            <span class="tag">DialogFlow</span>
-                            <span class="tag">Manychat</span>
-                            <span class="tag">Botpress</span>
+            <div id="web-panel" class="project-panel is-active" role="tabpanel" aria-labelledby="project-tab-web">
+                <div class="projects-grid">
+                    <article class="project-card card">
+                        <div class="project-image project-bg-1">
+                            <span>Masjidina.com</span>
                         </div>
-                        <a href="#" class="project-link">Lihat Proyek</a>
-                    </div>
-                </article>
+                        <div class="project-info">
+                            <h3>Sistem Informasi Manajemen Masjid</h3>
+                            <p>Pengembangan modul kegiatan, donasi, laporan keuangan, dan dashboard admin interaktif berbasis Serenity Framework.</p>
+                            <div class="project-tags">
+                                <span class="tag">ASP.NET</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">SQL Server</span>
+                            </div>
+                            <a href="#" class="project-link">Lihat Proyek</a>
+                        </div>
+                    </article>
 
-                <article class="project-card card">
-                    <div class="project-image project-bg-3">
-                        <span>WordPress Project</span>
-                    </div>
-                    <div class="project-info">
-                        <h3>LINK.ID & eNotaris</h3>
-                        <p>Berkontribusi dalam pengembangan website WordPress untuk proyek marketplace dan layanan legal digital.</p>
-                        <div class="project-tags">
-                            <span class="tag">WordPress</span>
-                            <span class="tag">PHP</span>
-                            <span class="tag">MySQL</span>
+                    <article class="project-card card">
+                        <div class="project-image project-bg-2">
+                            <span>AI Restaurant ChatBot</span>
                         </div>
-                        <a href="#" class="project-link">Lihat Proyek</a>
+                        <div class="project-info">
+                            <h3>Chatbot Pemesanan Restoran</h3>
+                            <p>Pengembangan chatbot untuk alur pemesanan restoran dengan integrasi platform percakapan populer.</p>
+                            <div class="project-tags">
+                                <span class="tag">DialogFlow</span>
+                                <span class="tag">Manychat</span>
+                                <span class="tag">Botpress</span>
+                            </div>
+                            <a href="#" class="project-link">Lihat Proyek</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card card">
+                        <div class="project-image project-bg-3">
+                            <span>WordPress Project</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>LINK.ID & eNotaris</h3>
+                            <p>Berkontribusi dalam pengembangan website WordPress untuk proyek marketplace dan layanan legal digital.</p>
+                            <div class="project-tags">
+                                <span class="tag">WordPress</span>
+                                <span class="tag">PHP</span>
+                                <span class="tag">MySQL</span>
+                            </div>
+                            <a href="#" class="project-link">Lihat Proyek</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="app-panel" class="project-panel" role="tabpanel" aria-labelledby="project-tab-app" hidden>
+                <div class="app-grid">
+                    <article class="app-card card">
+                        <div class="app-card-main">
+                            <div class="app-card-head">
+                                <h3>AlQuranApp</h3>
+                                <a href="https://github.com/imismaindra/AlQuranApp.git" target="_blank" rel="noopener noreferrer" class="project-link">Lihat Repository</a>
+                            </div>
+                            <p class="app-desc">Aplikasi mobile Al-Quran dengan fokus pada pengalaman membaca, progress baca otomatis, resume chapter, dan reader interaktif.</p>
+                            <div class="project-tags">
+                                <span class="tag">Mobile App</span>
+                                <span class="tag">Reader</span>
+                                <span class="tag">AsyncStorage</span>
+                            </div>
+                        </div>
+                        <div class="app-card-media">
+                            <div class="app-preview">
+                                <img src="images/alquranapp/screen-01.jpg" alt="Preview AlQuranApp 1" class="app-preview-shot">
+                                <img src="images/alquranapp/screen-02.jpg" alt="Preview AlQuranApp 2" class="app-preview-shot">
+                                <img src="images/alquranapp/screen-03.jpg" alt="Preview AlQuranApp 3" class="app-preview-shot">
+                            </div>
+                            <button type="button" class="app-popup-btn" data-app-name="AlQuranApp" data-gallery="images/alquranapp/screen-01.jpg|images/alquranapp/screen-02.jpg|images/alquranapp/screen-03.jpg|images/alquranapp/screen-04.jpg|images/alquranapp/screen-05.jpg|images/alquranapp/screen-06.jpg|images/alquranapp/screen-07.jpg">
+                                Lihat Semua Foto
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="app-card card">
+                        <div class="app-card-main">
+                            <div class="app-card-head">
+                                <h3>Komikuy</h3>
+                                <a href="https://github.com/imismaindra/komikuy" target="_blank" rel="noopener noreferrer" class="project-link">Lihat Repository</a>
+                            </div>
+                            <p class="app-desc">Aplikasi baca komik berbasis Expo + React Native dengan feed komik, rekomendasi format, reader chapter, bookmark update, dan riwayat baca.</p>
+                            <div class="project-tags">
+                                <span class="tag">Expo SDK 54</span>
+                                <span class="tag">React Native 0.81</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">AsyncStorage</span>
+                            </div>
+                            <div class="app-meta">
+                                <p><strong>API:</strong> <code>https://api.shngm.io</code></p>
+                                <p><strong>Client:</strong> <code>src/api/shngmClient.ts</code> (timeout, retry, cache memory + persist GET)</p>
+                                <p><strong>Data Lokal:</strong> bookmark, history/progress, tema, profil, dan simulasi sync cloud.</p>
+                            </div>
+                        </div>
+                        <div class="app-card-media">
+                            <div class="app-preview">
+                                <img src="images/komikuy/screen-01.jpg" alt="Preview Komikuy 1" class="app-preview-shot">
+                                <img src="images/komikuy/screen-02.jpg" alt="Preview Komikuy 2" class="app-preview-shot">
+                                <img src="images/komikuy/screen-03.jpg" alt="Preview Komikuy 3" class="app-preview-shot">
+                            </div>
+                            <button type="button" class="app-popup-btn" data-app-name="Komikuy" data-gallery="images/komikuy/screen-01.jpg|images/komikuy/screen-02.jpg|images/komikuy/screen-03.jpg|images/komikuy/screen-04.jpg|images/komikuy/screen-05.jpg|images/komikuy/screen-06.jpg|images/komikuy/screen-07.jpg|images/komikuy/screen-08.jpg">
+                                Lihat Semua Foto
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="galleryModal" class="gallery-modal" aria-hidden="true">
+                <div class="gallery-backdrop" data-gallery-close></div>
+                <div class="gallery-dialog card" role="dialog" aria-modal="true" aria-labelledby="galleryTitle" tabindex="-1">
+                    <div class="gallery-top">
+                        <h3 id="galleryTitle">Galeri Proyek</h3>
+                        <button type="button" class="gallery-close" aria-label="Tutup galeri" data-gallery-close>&times;</button>
                     </div>
-                </article>
+                    <div id="galleryGrid" class="gallery-grid"></div>
+                </div>
             </div>
         </div>
     </section>

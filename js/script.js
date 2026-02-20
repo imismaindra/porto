@@ -56,6 +56,115 @@ if (contactForm) {
     });
 }
 
+const projectTabs = Array.from(document.querySelectorAll('.project-tab'));
+const projectPanels = Array.from(document.querySelectorAll('.project-panel'));
+
+function activateProjectTab(targetId) {
+    if (!targetId) {
+        return;
+    }
+
+    projectTabs.forEach((tab) => {
+        const isActive = tab.dataset.tabTarget === targetId;
+        tab.classList.toggle('is-active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    projectPanels.forEach((panel) => {
+        const isActive = panel.id === targetId;
+        panel.classList.toggle('is-active', isActive);
+        panel.hidden = !isActive;
+    });
+}
+
+projectTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+        activateProjectTab(tab.dataset.tabTarget);
+    });
+});
+
+const initialProjectTab = projectTabs.find((tab) => tab.getAttribute('aria-selected') === 'true') || projectTabs[0];
+if (initialProjectTab) {
+    activateProjectTab(initialProjectTab.dataset.tabTarget);
+}
+
+const galleryModal = document.getElementById('galleryModal');
+const galleryGrid = document.getElementById('galleryGrid');
+const galleryTitle = document.getElementById('galleryTitle');
+const galleryDialog = galleryModal?.querySelector('.gallery-dialog');
+const galleryOpenButtons = document.querySelectorAll('.app-popup-btn');
+const galleryCloseButtons = document.querySelectorAll('[data-gallery-close]');
+let lastFocusedElement = null;
+
+function closeGallery() {
+    if (!galleryModal) {
+        return;
+    }
+
+    galleryModal.classList.remove('is-open');
+    galleryModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+
+    if (galleryGrid) {
+        galleryGrid.innerHTML = '';
+    }
+
+    if (lastFocusedElement instanceof HTMLElement) {
+        lastFocusedElement.focus();
+    }
+}
+
+function openGallery(title, imageSources) {
+    if (!galleryModal || !galleryGrid) {
+        return;
+    }
+
+    galleryGrid.innerHTML = '';
+
+    imageSources.forEach((src, index) => {
+        const image = document.createElement('img');
+        image.src = src;
+        image.alt = `${title} screenshot ${index + 1}`;
+        image.loading = 'lazy';
+        galleryGrid.appendChild(image);
+    });
+
+    if (galleryTitle) {
+        galleryTitle.textContent = `Galeri ${title}`;
+    }
+
+    galleryModal.classList.add('is-open');
+    galleryModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    galleryDialog?.focus();
+}
+
+galleryOpenButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const sources = (button.dataset.gallery || '')
+            .split('|')
+            .map((item) => item.trim())
+            .filter(Boolean);
+
+        if (!sources.length) {
+            return;
+        }
+
+        lastFocusedElement = button;
+        openGallery(button.dataset.appName || 'Proyek', sources);
+    });
+});
+
+galleryCloseButtons.forEach((button) => {
+    button.addEventListener('click', closeGallery);
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && galleryModal?.classList.contains('is-open')) {
+        closeGallery();
+    }
+});
+
 const heroReveal = document.querySelectorAll('.hero-content, .hero-media');
 heroReveal.forEach((item) => {
     item.classList.add('reveal', 'is-visible');
@@ -68,7 +177,10 @@ const revealTargets = [
     '.timeline-item',
     '.edu-card',
     '.cert-card',
+    '.project-tabs',
     '.project-card',
+    '.app-card',
+    '.app-preview-shot',
     '.contact-wrapper .card',
     '.hero-note'
 ];
