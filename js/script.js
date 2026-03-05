@@ -56,7 +56,24 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        showToast('Terima kasih! Pesan Anda telah dikirim.', 'success');
+
+        const name = document.getElementById('contactName').value;
+        const email = document.getElementById('contactEmail').value;
+        const subject = document.getElementById('contactSubject').value;
+        const message = document.getElementById('contactMessage').value;
+
+        // Nomor WhatsApp tujuan (format internasional: 62...)
+        const phoneNumber = '6285173329189';
+
+        // Format pesan
+        const text = `Halo Ahmad Maulana Ismaindra,\n\nPerkenalkan saya ${name} (${email}).\n${subject ? `\nSubjek: ${subject}\n` : ''}\nPesan:\n${message}`;
+        const encodedText = encodeURIComponent(text);
+
+        // Arahkan ke WhatsApp
+        window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
+
+        // Tampilkan pesan dan reset form
+        showToast('Mengalihkan Anda ke WhatsApp...', 'success');
         contactForm.reset();
     });
 }
@@ -70,12 +87,12 @@ function showToast(message, type = 'success') {
             <span>${message}</span>
         </div>
     `;
-    
+
     document.body.appendChild(toast);
-    
+
     // Trigger animation
     setTimeout(() => toast.classList.add('show'), 100);
-    
+
     // Remove after 3 seconds
     setTimeout(() => {
         toast.classList.remove('show');
