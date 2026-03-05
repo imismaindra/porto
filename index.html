@@ -3,7 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio Ahmad Maulana Ismaindra - Web Developer">
+    <meta name="description" content="Portfolio Ahmad Maulana Ismaindra - Web Developer dan Asisten Laboratorium dengan spesialisasi pengembangan web.">
+    <meta name="keywords" content="Portfolio, Web Developer, Ahmad Maulana Ismaindra, Ismaindra, ITATS, Frontend, Backend">
+    <meta name="author" content="Ahmad Maulana Ismaindra">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://imismaindra.github.io/">
+    <meta property="og:title" content="Portfolio - Ahmad Maulana Ismaindra">
+    <meta property="og:description" content="Portfolio Ahmad Maulana Ismaindra - Web Developer dengan spesialisasi pengembangan web.">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Portfolio - Ahmad Maulana Ismaindra">
+    <meta property="twitter:description" content="Portfolio Ahmad Maulana Ismaindra - Web Developer dengan spesialisasi pengembangan web.">
     <title>Portfolio - Ahmad Maulana Ismaindra</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +28,7 @@
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">Ismaindra</div>
-                <ul class="nav-menu">
+                <ul id="nav-menu" class="nav-menu">
                     <li><a href="#home" class="nav-link">Beranda</a></li>
                     <li><a href="#about" class="nav-link">Tentang</a></li>
                     <li><a href="#experience" class="nav-link">Pengalaman</a></li>
@@ -25,11 +37,11 @@
                     <li><a href="#projects" class="nav-link">Proyek</a></li>
                     <li><a href="#contact" class="nav-link">Kontak</a></li>
                 </ul>
-                <div class="hamburger">
+                <button type="button" class="hamburger" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="nav-menu">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
         </div>
     </nav>
@@ -123,7 +135,7 @@
                         <span>Januari 2022 - Oktober 2023</span>
                         <strong>Web Developer (Pegawai Tetap)</strong>
                         <div class="company-brand">
-                            <img src="images/pt-universal-big-data.svg" alt="Logo PT Universal Big Data" class="company-logo">
+                            <img src="images/pt-universal-big-data.svg" alt="Logo PT Universal Big Data" class="company-logo" loading="lazy">
                             <p>PT Universal Big Data - Tasikmadu, Malang</p>
                         </div>
                     </div>
@@ -142,7 +154,7 @@
                         <span>Juni 2021 - Desember 2021</span>
                         <strong>WordPress & ChatBot Developer (Magang)</strong>
                         <div class="company-brand">
-                            <img src="images/pt-universal-big-data.svg" alt="Logo PT Universal Big Data" class="company-logo">
+                            <img src="images/pt-universal-big-data.svg" alt="Logo PT Universal Big Data" class="company-logo" loading="lazy">
                             <p>PT Universal Big Data - Tasikmadu, Malang</p>
                         </div>
                     </div>
@@ -161,7 +173,7 @@
                         <span>2024 - Sekarang</span>
                         <strong>Asisten Laboratorium</strong>
                         <div class="company-brand">
-                            <img src="images/logo-lab.png" alt="Logo Lab Bahasa Pemrograman ITATS" class="company-logo">
+                            <img src="images/logo-lab.png" alt="Logo Lab Bahasa Pemrograman ITATS" class="company-logo" loading="lazy">
                             <p>Lab Bahasa Pemrograman ITATS - Surabaya</p>
                         </div>
                     </div>
@@ -179,7 +191,7 @@
                         <span>2023 - Sekarang</span>
                         <strong>Anggota Divisi Kewirausahaan</strong>
                         <div class="company-brand">
-                            <img src="images/logo-himpunan.png" alt="Logo Himpunan Mahasiswa Teknik Informatika" class="company-logo">
+                            <img src="images/logo-himpunan.png" alt="Logo Himpunan Mahasiswa Teknik Informatika" class="company-logo" loading="lazy">
                             <p>Himpunan Mahasiswa Teknik Informatika (HMIF) - Surabaya</p>
                         </div>
                     </div>
@@ -208,7 +220,7 @@
                     <span class="edu-year">Sedang Berjalan</span>
                     <h3>S1 Teknik Informatika</h3>
                     <div class="edu-school">
-                        <img src="images/logo-itats.png" alt="Logo ITATS" class="edu-logo edu-logo-itats">
+                        <img src="images/logo-itats.png" alt="Logo ITATS" class="edu-logo edu-logo-itats" loading="lazy">
                         <p>Institut Teknologi Adhi Tama Surabaya (ITATS)</p>
                     </div>
                     <small>Aktif sebagai mahasiswa dan asisten laboratorium pemrograman.</small>
@@ -217,7 +229,7 @@
                     <span class="edu-year">2019 - 2022</span>
                     <h3>SMK Rekayasa Perangkat Lunak (RPL)</h3>
                     <div class="edu-school">
-                        <img src="images/logo-smk.png" alt="Logo SMK Negeri 1 Bangil" class="edu-logo edu-logo-smk">
+                        <img src="images/logo-smk.png" alt="Logo SMK Negeri 1 Bangil" class="edu-logo edu-logo-smk" loading="lazy">
                         <p>SMK Negeri 1 Bangil</p>
                     </div>
                     <small>Bangil, Pasuruan - fondasi dasar pemrograman dan pengembangan web.</small>
@@ -371,9 +383,9 @@
                         </div>
                         <div class="app-card-media">
                             <div class="app-preview">
-                                <img src="images/alquranapp/screen-01.jpg" alt="Preview AlQuranApp 1" class="app-preview-shot">
-                                <img src="images/alquranapp/screen-02.jpg" alt="Preview AlQuranApp 2" class="app-preview-shot">
-                                <img src="images/alquranapp/screen-03.jpg" alt="Preview AlQuranApp 3" class="app-preview-shot">
+                                <img src="images/alquranapp/screen-01.jpg" alt="Preview AlQuranApp 1" class="app-preview-shot" loading="lazy">
+                                <img src="images/alquranapp/screen-02.jpg" alt="Preview AlQuranApp 2" class="app-preview-shot" loading="lazy">
+                                <img src="images/alquranapp/screen-03.jpg" alt="Preview AlQuranApp 3" class="app-preview-shot" loading="lazy">
                             </div>
                             <button type="button" class="app-popup-btn" data-app-name="AlQuranApp" data-gallery="images/alquranapp/screen-01.jpg|images/alquranapp/screen-02.jpg|images/alquranapp/screen-03.jpg|images/alquranapp/screen-04.jpg|images/alquranapp/screen-05.jpg|images/alquranapp/screen-06.jpg|images/alquranapp/screen-07.jpg">
                                 Lihat Semua Foto
@@ -402,9 +414,9 @@
                         </div>
                         <div class="app-card-media">
                             <div class="app-preview">
-                                <img src="images/komikuy/screen-01.jpg" alt="Preview Komikuy 1" class="app-preview-shot">
-                                <img src="images/komikuy/screen-02.jpg" alt="Preview Komikuy 2" class="app-preview-shot">
-                                <img src="images/komikuy/screen-03.jpg" alt="Preview Komikuy 3" class="app-preview-shot">
+                                <img src="images/komikuy/screen-01.jpg" alt="Preview Komikuy 1" class="app-preview-shot" loading="lazy">
+                                <img src="images/komikuy/screen-02.jpg" alt="Preview Komikuy 2" class="app-preview-shot" loading="lazy">
+                                <img src="images/komikuy/screen-03.jpg" alt="Preview Komikuy 3" class="app-preview-shot" loading="lazy">
                             </div>
                             <button type="button" class="app-popup-btn" data-app-name="Komikuy" data-gallery="images/komikuy/screen-01.jpg|images/komikuy/screen-02.jpg|images/komikuy/screen-03.jpg|images/komikuy/screen-04.jpg|images/komikuy/screen-05.jpg|images/komikuy/screen-06.jpg|images/komikuy/screen-07.jpg|images/komikuy/screen-08.jpg">
                                 Lihat Semua Foto
@@ -438,16 +450,16 @@
             <div class="contact-wrapper">
                 <form class="contact-form card" id="contactForm">
                     <div class="form-group">
-                        <input type="text" placeholder="Nama Anda" required>
+                        <input type="text" placeholder="Nama Anda" aria-label="Nama Anda" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Email Anda" required>
+                        <input type="email" placeholder="Email Anda" aria-label="Email Anda" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Subjek">
+                        <input type="text" placeholder="Subjek" aria-label="Subjek">
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Pesan Anda" rows="5" required></textarea>
+                        <textarea placeholder="Pesan Anda" aria-label="Pesan Anda" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Kirim Pesan</button>
                 </form>

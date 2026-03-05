@@ -8,12 +8,17 @@ function closeMenu() {
         return;
     }
 
+    if (hamburger.hasAttribute('aria-expanded')) {
+        hamburger.setAttribute('aria-expanded', 'false');
+    }
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
 }
 
 if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
+        const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !isExpanded);
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
@@ -51,9 +56,31 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        alert('Terima kasih! Pesan Anda telah dikirim. Saya akan segera menghubungi Anda.');
+        showToast('Terima kasih! Pesan Anda telah dikirim.', 'success');
         contactForm.reset();
     });
+}
+
+function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.innerHTML = `
+        <div class="toast-content">
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Trigger animation
+    setTimeout(() => toast.classList.add('show'), 100);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
 }
 
 const projectTabs = Array.from(document.querySelectorAll('.project-tab'));
