@@ -1,16 +1,14 @@
-﻿const navbar = document.querySelector('.navbar');
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+const navbar = document.querySelector('.navbar');
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
 function closeMenu() {
-    if (!hamburger || !navMenu) {
-        return;
-    }
-
-    if (hamburger.hasAttribute('aria-expanded')) {
-        hamburger.setAttribute('aria-expanded', 'false');
-    }
+    if (!hamburger || !navMenu) return;
+    hamburger.setAttribute('aria-expanded', 'false');
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
 }
@@ -22,62 +20,49 @@ if (hamburger && navMenu) {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
-
-    navLinks.forEach((link) => {
-        link.addEventListener('click', closeMenu);
-    });
+    navLinks.forEach(link => link.addEventListener('click', closeMenu));
 }
+window.addEventListener('resize', closeMenu);
 
+/* ============================================================
+   SMOOTH SCROLL
+   ============================================================ */
 const stickyOffset = () => (navbar ? navbar.offsetHeight + 8 : 0);
 
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const hash = anchor.getAttribute('href');
-    if (!hash || hash === '#') {
-        return;
-    }
-
-    anchor.addEventListener('click', (event) => {
+    if (!hash || hash === '#') return;
+    anchor.addEventListener('click', event => {
         const target = document.querySelector(hash);
-        if (!target) {
-            return;
-        }
-
+        if (!target) return;
         event.preventDefault();
         const top = target.getBoundingClientRect().top + window.pageYOffset - stickyOffset();
-
-        window.scrollTo({
-            top,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top, behavior: 'smooth' });
     });
 });
 
+/* ============================================================
+   CONTACT FORM → WHATSAPP
+   ============================================================ */
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', (event) => {
+    contactForm.addEventListener('submit', event => {
         event.preventDefault();
-
         const name = document.getElementById('contactName').value;
         const email = document.getElementById('contactEmail').value;
         const subject = document.getElementById('contactSubject').value;
         const message = document.getElementById('contactMessage').value;
-
-        // Nomor WhatsApp tujuan (format internasional: 62...)
         const phoneNumber = '6285173329189';
-
-        // Format pesan
-        const text = `Halo Ahmad Maulana Ismaindra,\n\nPerkenalkan saya ${name} (${email}).\n${subject ? `\nSubjek: ${subject}\n` : ''}\nPesan:\n${message}`;
-        const encodedText = encodeURIComponent(text);
-
-        // Arahkan ke WhatsApp
-        window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
-
-        // Tampilkan pesan dan reset form
+        const text = `Halo Ahmad Maulana Ismaindra,\n\nPerkenalkan saya ${name} (${email}).${subject ? `\nSubjek: ${subject}` : ''}\n\nPesan:\n${message}`;
+        window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, '_blank');
         showToast('Mengalihkan Anda ke WhatsApp...', 'success');
         contactForm.reset();
     });
 }
 
+/* ============================================================
+   TOAST
+   ============================================================ */
 function showToast(message, type = 'success') {
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
@@ -85,223 +70,273 @@ function showToast(message, type = 'success') {
         <div class="toast-content">
             <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
             <span>${message}</span>
-        </div>
-    `;
-
+        </div>`;
     document.body.appendChild(toast);
-
-    // Trigger animation
-    setTimeout(() => toast.classList.add('show'), 100);
-
-    // Remove after 3 seconds
+    setTimeout(() => toast.classList.add('show'), 80);
     setTimeout(() => {
         toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 300);
-    }, 3000);
+        setTimeout(() => toast.remove(), 360);
+    }, 3200);
 }
 
+/* ============================================================
+   PROJECT TABS
+   ============================================================ */
 const projectTabs = Array.from(document.querySelectorAll('.project-tab'));
 const projectPanels = Array.from(document.querySelectorAll('.project-panel'));
 
 function activateProjectTab(targetId) {
-    if (!targetId) {
-        return;
-    }
-
-    projectTabs.forEach((tab) => {
+    if (!targetId) return;
+    projectTabs.forEach(tab => {
         const isActive = tab.dataset.tabTarget === targetId;
         tab.classList.toggle('is-active', isActive);
         tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
     });
-
-    projectPanels.forEach((panel) => {
+    projectPanels.forEach(panel => {
         const isActive = panel.id === targetId;
         panel.classList.toggle('is-active', isActive);
         panel.hidden = !isActive;
     });
 }
+projectTabs.forEach(tab => tab.addEventListener('click', () => activateProjectTab(tab.dataset.tabTarget)));
+const initialTab = projectTabs.find(t => t.getAttribute('aria-selected') === 'true') || projectTabs[0];
+if (initialTab) activateProjectTab(initialTab.dataset.tabTarget);
 
-projectTabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-        activateProjectTab(tab.dataset.tabTarget);
-    });
-});
-
-const initialProjectTab = projectTabs.find((tab) => tab.getAttribute('aria-selected') === 'true') || projectTabs[0];
-if (initialProjectTab) {
-    activateProjectTab(initialProjectTab.dataset.tabTarget);
-}
-
+/* ============================================================
+   GALLERY MODAL
+   ============================================================ */
 const galleryModal = document.getElementById('galleryModal');
 const galleryGrid = document.getElementById('galleryGrid');
 const galleryTitle = document.getElementById('galleryTitle');
 const galleryDialog = galleryModal?.querySelector('.gallery-dialog');
-const galleryOpenButtons = document.querySelectorAll('.app-popup-btn');
 const galleryCloseButtons = document.querySelectorAll('[data-gallery-close]');
 let lastFocusedElement = null;
+let projectSwiper = null;
 
 function closeGallery() {
-    if (!galleryModal) {
-        return;
-    }
-
+    if (!galleryModal) return;
     galleryModal.classList.remove('is-open');
     galleryModal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
-
-    if (galleryGrid) {
-        galleryGrid.innerHTML = '';
-    }
-
-    if (lastFocusedElement instanceof HTMLElement) {
-        lastFocusedElement.focus();
-    }
+    if (galleryGrid) galleryGrid.innerHTML = '';
+    if (projectSwiper) { projectSwiper.destroy(true, true); projectSwiper = null; }
+    if (lastFocusedElement instanceof HTMLElement) lastFocusedElement.focus();
 }
 
 function openGallery(title, imageSources) {
-    if (!galleryModal || !galleryGrid) {
-        return;
-    }
-
+    if (!galleryModal || !galleryGrid) return;
     galleryGrid.innerHTML = '';
-
     imageSources.forEach((src, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
         const image = document.createElement('img');
         image.src = src;
-        image.alt = `${title} screenshot ${index + 1}`;
+        image.alt = `${title} — screenshot tampilan ${index + 1} dari ${imageSources.length}`;
         image.loading = 'lazy';
-        galleryGrid.appendChild(image);
+        slide.appendChild(image);
+        galleryGrid.appendChild(slide);
     });
-
-    if (galleryTitle) {
-        galleryTitle.textContent = `Galeri ${title}`;
-    }
-
+    if (galleryTitle) galleryTitle.textContent = `Galeri ${title}`;
     galleryModal.classList.add('is-open');
     galleryModal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
     galleryDialog?.focus();
+    projectSwiper = new Swiper('.gallery-swiper', {
+        slidesPerView: 1, spaceBetween: 18,
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        breakpoints: { 480: { slidesPerView: 2 }, 768: { slidesPerView: 3 }, 1024: { slidesPerView: 4 } }
+    });
 }
 
-galleryOpenButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        const sources = (button.dataset.gallery || '')
-            .split('|')
-            .map((item) => item.trim())
-            .filter(Boolean);
-
-        if (!sources.length) {
-            return;
-        }
-
-        lastFocusedElement = button;
-        openGallery(button.dataset.appName || 'Proyek', sources);
-    });
-});
-
-galleryCloseButtons.forEach((button) => {
-    button.addEventListener('click', closeGallery);
-});
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && galleryModal?.classList.contains('is-open')) {
-        closeGallery();
+document.addEventListener('click', event => {
+    const btn = event.target.closest('.app-popup-btn');
+    if (btn) {
+        const sources = (btn.dataset.gallery || '').split('|').map(s => s.trim()).filter(Boolean);
+        if (!sources.length) return;
+        lastFocusedElement = btn;
+        openGallery(btn.dataset.appName || 'Proyek', sources);
     }
 });
-
-const heroReveal = document.querySelectorAll('.hero-content, .hero-media');
-heroReveal.forEach((item) => {
-    item.classList.add('reveal', 'is-visible');
+galleryCloseButtons.forEach(btn => btn.addEventListener('click', closeGallery));
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && galleryModal?.classList.contains('is-open')) closeGallery();
 });
 
-const revealTargets = [
-    '.section-head',
-    '.quick-item',
-    '.about-layout .card',
-    '.timeline-item',
-    '.edu-card',
-    '.cert-card',
-    '.project-tabs',
-    '.project-card',
-    '.app-card',
-    '.app-preview-shot',
-    '.contact-wrapper .card',
-    '.hero-note'
-];
+/* ============================================================
+   RENDER DYNAMIC DATA
+   ============================================================ */
+const renderDynamicData = () => {
+    if (typeof portfolioData === 'undefined') return;
 
-const revealElements = [];
-revealTargets.forEach((selector) => {
-    document.querySelectorAll(selector).forEach((element, index) => {
-        element.classList.add('reveal');
-        element.classList.add(`reveal-delay-${(index % 3) + 1}`);
-        revealElements.push(element);
-    });
-});
+    // Experience
+    const expTimeline = document.getElementById('experience-timeline');
+    if (expTimeline) {
+        expTimeline.innerHTML = portfolioData.experience.map((exp, i) => `
+            <article class="timeline-item card" data-aos="fade-up" data-aos-delay="${(i % 3) * 100}" role="listitem">
+                <div class="timeline-meta">
+                    <span>${exp.period}</span>
+                    <strong>${exp.role}</strong>
+                    <div class="company-brand">
+                        <img src="${exp.companyLogo}" alt="Logo ${exp.companyName}" class="company-logo" loading="lazy">
+                        <p>${exp.companyName}</p>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <p>${exp.description}</p>
+                    <ul>${exp.responsibilities.map(r => `<li>${r}</li>`).join('')}</ul>
+                </div>
+            </article>`).join('');
+    }
 
-if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) {
-                    return;
-                }
+    // Education
+    const eduGrid = document.getElementById('education-grid');
+    if (eduGrid) {
+        eduGrid.innerHTML = portfolioData.education.map((edu, i) => `
+            <article class="edu-card card" data-aos="zoom-in-up" data-aos-delay="${i * 120}">
+                <span class="edu-year">${edu.period}</span>
+                <h3>${edu.degree}</h3>
+                <div class="edu-school">
+                    <img src="${edu.schoolLogo}" alt="Logo ${edu.schoolName}" class="edu-logo ${edu.schoolLogoClass || ''}" loading="lazy">
+                    <p>${edu.schoolName}</p>
+                </div>
+                <small>${edu.description}</small>
+            </article>`).join('');
+    }
 
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            });
-        },
-        {
-            threshold: 0.16,
-            rootMargin: '0px 0px -64px 0px'
-        }
-    );
+    // Certifications
+    const certGrid = document.getElementById('certifications-grid');
+    if (certGrid) {
+        certGrid.innerHTML = portfolioData.certifications.map((cert, i) => `
+            <article class="cert-card card" data-provider="${cert.provider}" data-aos="fade-up" data-aos-delay="${(i % 3) * 100}">
+                <div>
+                    <h3>${cert.title}</h3>
+                    <p class="cert-issuer">${cert.issuer}</p>
+                    <p class="cert-date">${cert.date}</p>
+                    <p class="cert-id">${cert.credentialId}</p>
+                </div>
+                <span>${cert.year}</span>
+            </article>`).join('');
+    }
 
-    revealElements.forEach((element) => revealObserver.observe(element));
-} else {
-    revealElements.forEach((element) => element.classList.add('is-visible'));
+    // Web Projects
+    const webGrid = document.getElementById('web-projects-grid');
+    if (webGrid) {
+        webGrid.innerHTML = portfolioData.projects.web.map((proj, i) => `
+            <article class="project-card card" data-aos="fade-up" data-aos-delay="${(i % 3) * 100}">
+                <div class="project-image ${proj.bgClass}">
+                    <span>${proj.shortName}</span>
+                    <div class="project-overlay" aria-hidden="true">
+                        <a href="${proj.link}" class="project-overlay-btn" title="Lihat Proyek" tabindex="-1">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>${proj.title}</h3>
+                    <p>${proj.description}</p>
+                    <div class="project-tags">${proj.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+                    <a href="${proj.link}" class="project-link">Lihat Proyek <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>`).join('');
+    }
+
+    // App Projects
+    const appGrid = document.getElementById('app-projects-grid');
+    if (appGrid) {
+        appGrid.innerHTML = portfolioData.projects.app.map((proj, i) => `
+            <article class="app-card card" data-aos="fade-up" data-aos-delay="${(i % 2) * 100}">
+                <div class="app-card-main">
+                    <div class="app-card-head">
+                        <h3>${proj.title}</h3>
+                    </div>
+                    <p class="app-desc">${proj.description}</p>
+                    <div class="project-tags">${proj.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+                    ${proj.metaData ? `
+                    <div class="app-meta">
+                        ${proj.metaData.map(meta => `<p><strong>${meta.label}:</strong> ${meta.code ? `<code>${meta.code}</code>` : ''} ${meta.trailing || ''}</p>`).join('')}
+                    </div>` : ''}
+                    <div class="app-actions">
+                        <button type="button" class="app-popup-btn" data-app-name="${proj.title}" data-gallery="${proj.galleryImages.join('|')}">
+                            <i class="fas fa-images"></i> Galeri Foto
+                        </button>
+                        <a href="${proj.repoLink}" target="_blank" rel="noopener noreferrer" class="app-repo-btn">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                    </div>
+                </div>
+                <div class="app-card-media fan-out-gallery">
+                    <div class="app-preview-3d">
+                        ${proj.previewImages.map((img, idx) => `<img src="${img}" alt="${proj.title} — tampilan screenshot ${idx + 1}" class="app-shot-3d shot-${idx + 1}" loading="lazy">`).join('')}
+                    </div>
+                </div>
+            </article>`).join('');
+    }
+};
+
+renderDynamicData();
+
+/* ============================================================
+   AOS INIT
+   ============================================================ */
+if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 750, once: true, offset: 75, easing: 'ease-out-cubic' });
 }
 
+/* ============================================================
+   ACTIVE NAV — IntersectionObserver
+   ============================================================ */
 const sections = Array.from(document.querySelectorAll('section[id]'));
 
-function updateScrollUI() {
-    const scrollY = window.pageYOffset;
-
-    if (navbar) {
-        navbar.classList.toggle('scrolled', scrollY > 8);
-    }
-
-    if (!sections.length || !navLinks.length) {
-        return;
-    }
-
-    const threshold = scrollY + stickyOffset() + 120;
-    let current = sections[0].id;
-
-    sections.forEach((section) => {
-        if (threshold >= section.offsetTop) {
-            current = section.id;
+const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+            });
         }
     });
+}, { rootMargin: `-${navbar?.offsetHeight || 70}px 0px -60% 0px`, threshold: 0 });
 
-    navLinks.forEach((link) => {
-        const target = link.getAttribute('href')?.replace('#', '');
-        link.classList.toggle('active', target === current);
-    });
+sections.forEach(s => navObserver.observe(s));
+
+/* Navbar scroll state via IntersectionObserver on hero */
+const heroEl = document.getElementById('home');
+if (heroEl && navbar) {
+    const scrollObserver = new IntersectionObserver(([entry]) => {
+        navbar.classList.toggle('scrolled', !entry.isIntersecting);
+    }, { threshold: 0.1 });
+    scrollObserver.observe(heroEl);
 }
 
-let ticking = false;
-window.addEventListener('scroll', () => {
-    if (ticking) {
-        return;
-    }
+/* ============================================================
+   COUNTER ANIMATION (hero quick stats)
+   ============================================================ */
+function animateCountUp(el, target, suffix) {
+    const duration = 1400;
+    const start = performance.now();
+    const update = now => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(2, -10 * progress);
+        const current = Math.round(eased * target);
+        el.textContent = current + (suffix || '');
+        if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+}
 
-    window.requestAnimationFrame(() => {
-        updateScrollUI();
-        ticking = false;
+const statObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const rawTarget = el.dataset.countTarget;
+        const suffix = el.dataset.countSuffix || '';
+        if (!rawTarget) return;
+        animateCountUp(el, parseInt(rawTarget, 10), suffix);
+        statObserver.unobserve(el);
     });
+}, { threshold: 0.5 });
 
-    ticking = true;
-});
-
-window.addEventListener('resize', closeMenu);
-updateScrollUI();
+document.querySelectorAll('[data-count-target]').forEach(el => statObserver.observe(el));
