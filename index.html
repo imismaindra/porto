@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -10,7 +10,7 @@
         content="Portfolio, Web Developer, Ahmad Maulana Ismaindra, Ismaindra, ITATS, Frontend, Backend, Laravel, ASP.NET">
     <meta name="author" content="Ahmad Maulana Ismaindra">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#2f6fe4">
+    <meta name="theme-color" content="#080d14">
     <link rel="canonical" href="https://imismaindra.vercel.app/">
 
     <!-- Open Graph / Facebook -->
@@ -42,7 +42,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- AOS CSS -->
@@ -115,56 +115,60 @@
 
     <main id="main-content">
         <section id="home" class="hero" aria-label="Perkenalan">
+            <div class="hero-bg-grid" aria-hidden="true"></div>
             <div class="container hero-layout">
-                <div class="hero-content">
+                <div class="hero-top" data-aos="fade-up" data-aos-delay="0">
                     <span class="hero-pill">
                         <span class="pulse-dot" aria-hidden="true"></span>
                         Open to Work
                     </span>
-                    <h1>Hi, saya <span class="highlight">Ahmad Maulana Ismaindra</span>.</h1>
-                    <p class="subtitle" id="hero-subtitle" aria-label="Web Developer dan Asisten Laboratorium ITATS">Web
-                        Developer &bull; Asisten Laboratorium ITATS</p>
-                    <p class="description">Mahasiswa Teknik Informatika ITATS dengan pengalaman profesional membangun
-                        sistem
-                        web menggunakan ASP.NET, PHP, Laravel, JavaScript, dan MySQL.</p>
-                    <div class="cta-buttons">
+                </div>
+                <div class="hero-center">
+                    <h1 data-aos="fade-up" data-aos-delay="100">
+                        <span class="hero-name-line">Ahmad Maulana</span>
+                        <span class="hero-name-line highlight">Ismaindra</span>
+                    </h1>
+                    <p class="subtitle" data-aos="fade-up" data-aos-delay="200">Web Developer &nbsp;·&nbsp; Lab Assistant ITATS &nbsp;·&nbsp; Informatika ITATS</p>
+                    <p class="description" data-aos="fade-up" data-aos-delay="250">Membangun sistem web dengan ASP.NET, PHP, Laravel, JavaScript &amp; MySQL. Siap berkolaborasi untuk proyek impactful.</p>
+                    <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
                         <a href="#projects" class="btn btn-primary">
-                            <i class="fas fa-rocket" aria-hidden="true"></i>
-                            Lihat Proyek
+                            <i class="fas fa-rocket" aria-hidden="true"></i> Lihat Proyek
                         </a>
                         <a href="#contact" class="btn btn-secondary">
-                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                            Hubungi Saya
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Hubungi Saya
                         </a>
                     </div>
-                    <div class="hero-quick-stats">
-                        <div class="quick-item" data-aos="fade-up" data-aos-delay="200">
-                            <i class="fas fa-briefcase quick-icon" aria-hidden="true"></i>
-                            <strong data-count-target="4" data-count-suffix="+ Thn">4+ Thn</strong>
-                            <span>Pengalaman relevan</span>
+                </div>
+                <div class="hero-split" data-aos="fade-up" data-aos-delay="350">
+                    <div class="hero-profile-wrap">
+                        <div class="image-placeholder">
+                            <img src="images/profile3.png" alt="Foto profil Ahmad Maulana Ismaindra" class="profile-photo" fetchpriority="high">
                         </div>
-                        <div class="quick-item" data-aos="fade-up" data-aos-delay="300">
-                            <i class="fas fa-certificate quick-icon" aria-hidden="true"></i>
+                        <div class="hero-note">
+                            <i class="fas fa-location-dot" aria-hidden="true"></i>
+                            <span>Pasuruan, Jawa Timur</span>
+                        </div>
+                    </div>
+                    <div class="hero-stats-col">
+                        <div class="hero-stat-item">
+                            <strong data-count-target="4" data-count-suffix="+">4+</strong>
+                            <span>Tahun<br>Pengalaman</span>
+                        </div>
+                        <div class="hero-stat-divider" aria-hidden="true"></div>
+                        <div class="hero-stat-item">
                             <strong data-count-target="5">5</strong>
-                            <span>Sertifikasi aktif</span>
+                            <span>Sertifikasi<br>Aktif</span>
                         </div>
-                        <div class="quick-item" data-aos="fade-up" data-aos-delay="400">
-                            <i class="fas fa-layer-group quick-icon" aria-hidden="true"></i>
+                        <div class="hero-stat-divider" aria-hidden="true"></div>
+                        <div class="hero-stat-item">
                             <strong data-count-target="4">4</strong>
-                            <span>Peran pengalaman</span>
+                            <span>Peran<br>Profesional</span>
                         </div>
                     </div>
                 </div>
-                <div class="hero-media" data-aos="fade-left" data-aos-delay="200">
-                    <div class="image-placeholder">
-                        <img src="images/profile3.png" alt="Foto profil Ahmad Maulana Ismaindra, Web Developer"
-                            class="profile-photo" fetchpriority="high">
-                    </div>
-                    <div class="hero-note" data-aos="fade-up" data-aos-delay="500">
-                        <i class="fas fa-location-dot" aria-hidden="true"></i>
-                        <span>Panderejo, Gempol, Pasuruan 67155</span>
-                    </div>
-                </div>
+            </div>
+            <div class="hero-scroll-hint" aria-hidden="true">
+                <span></span>
             </div>
         </section>
 

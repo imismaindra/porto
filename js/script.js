@@ -1,6 +1,51 @@
 /* ============================================================
    NAVBAR
    ============================================================ */
+
+/* --- TAG COLOR UTILITY --- */
+const TAG_COLORS = {
+    // Languages
+    'C#': 'tag-purple', 'C++': 'tag-purple', 'TypeScript': 'tag-purple', 'JavaScript': 'tag-purple',
+    'PHP': 'tag-purple', 'Dart': 'tag-purple', 'Python': 'tag-purple',
+    // Frameworks & Platforms
+    'Laravel': 'tag-green', 'ASP.NET': 'tag-green', 'React Native': 'tag-green',
+    'Expo SDK 54': 'tag-green', 'WordPress': 'tag-green', 'Botpress': 'tag-green',
+    // Databases & Data
+    'MySQL': 'tag-orange', 'SQL Server': 'tag-orange', 'AsyncStorage': 'tag-orange',
+    // Runtimes & Build
+    'Expo': 'tag-cyan', 'React Native 0.81': 'tag-cyan',
+    // Services / Tools
+    'DialogFlow': 'tag-teal', 'Manychat': 'tag-teal',
+    // Mobile label
+    'Mobile App': 'tag-cyan', 'Reader': 'tag-cyan',
+};
+
+function getTagClass(tech) {
+    return TAG_COLORS[tech] || '';
+}
+
+function renderTag(tech) {
+    const cls = getTagClass(tech);
+    return `<span class="tag ${cls}">${tech}</span>`;
+}
+
+/* --- ROLE BADGE HELPER --- */
+const ROLE_BADGES = {
+    'dev':    { cls: 'badge-dev',    icon: 'fa-code',       label: 'Developer' },
+    'intern': { cls: 'badge-intern', icon: 'fa-seedling',   label: 'Magang' },
+    'lab':    { cls: 'badge-lab',    icon: 'fa-flask',      label: 'Lab Asisten' },
+    'org':    { cls: 'badge-org',    icon: 'fa-people-group', label: 'Organisasi' },
+};
+
+function getRoleBadgeKey(role) {
+    const r = role.toLowerCase();
+    if (r.includes('magang') || r.includes('intern')) return 'intern';
+    if (r.includes('asisten') || r.includes('lab')) return 'lab';
+    if (r.includes('himpunan') || r.includes('divisi') || r.includes('anggota')) return 'org';
+    return 'dev';
+}
+
+
 const navbar = document.querySelector('.navbar');
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -172,10 +217,14 @@ const renderDynamicData = () => {
     // Experience
     const expTimeline = document.getElementById('experience-timeline');
     if (expTimeline) {
-        expTimeline.innerHTML = portfolioData.experience.map((exp, i) => `
+        expTimeline.innerHTML = portfolioData.experience.map((exp, i) => {
+            const badgeKey = getRoleBadgeKey(exp.role);
+            const badge = ROLE_BADGES[badgeKey];
+            return `
             <article class="timeline-item card" data-aos="fade-up" data-aos-delay="${(i % 3) * 100}" role="listitem">
                 <div class="timeline-meta">
-                    <span>${exp.period}</span>
+                    <span class="timeline-role-badge ${badge.cls}"><i class="fas ${badge.icon}"></i>${badge.label}</span>
+                    <span style="display:block;margin-bottom:.55rem;">${exp.period}</span>
                     <strong>${exp.role}</strong>
                     <div class="company-brand">
                         <img src="${exp.companyLogo}" alt="Logo ${exp.companyName}" class="company-logo" loading="lazy">
@@ -186,7 +235,8 @@ const renderDynamicData = () => {
                     <p>${exp.description}</p>
                     <ul>${exp.responsibilities.map(r => `<li>${r}</li>`).join('')}</ul>
                 </div>
-            </article>`).join('');
+            </article>`;
+        }).join('');
     }
 
     // Education
@@ -235,7 +285,7 @@ const renderDynamicData = () => {
                 <div class="project-info">
                     <h3>${proj.title}</h3>
                     <p>${proj.description}</p>
-                    <div class="project-tags">${proj.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+                    <div class="project-tags">${proj.tags.map(renderTag).join('')}</div>
                     <a href="${proj.link}" class="project-link">Lihat Proyek <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>`).join('');
@@ -251,7 +301,7 @@ const renderDynamicData = () => {
                         <h3>${proj.title}</h3>
                     </div>
                     <p class="app-desc">${proj.description}</p>
-                    <div class="project-tags">${proj.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+                    <div class="project-tags">${proj.tags.map(renderTag).join('')}</div>
                     ${proj.metaData ? `
                     <div class="app-meta">
                         ${proj.metaData.map(meta => `<p><strong>${meta.label}:</strong> ${meta.code ? `<code>${meta.code}</code>` : ''} ${meta.trailing || ''}</p>`).join('')}
