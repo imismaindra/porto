@@ -242,31 +242,39 @@ const renderDynamicData = () => {
     // Education
     const eduGrid = document.getElementById('education-grid');
     if (eduGrid) {
-        eduGrid.innerHTML = portfolioData.education.map((edu, i) => `
-            <article class="edu-card card" data-aos="zoom-in-up" data-aos-delay="${i * 120}">
+        eduGrid.innerHTML = portfolioData.education.map((edu, i) => {
+            const bentoClass = i === 0 ? 'bento-item-lg' : 'bento-item-md';
+            return `
+            <article class="bento-item ${bentoClass} glass-premium" data-aos="zoom-in-up" data-aos-delay="${i * 120}">
                 <span class="edu-year">${edu.period}</span>
                 <h3>${edu.degree}</h3>
-                <div class="edu-school">
+                <div class="edu-school" style="margin-top: 1rem;">
                     <img src="${edu.schoolLogo}" alt="Logo ${edu.schoolName}" class="edu-logo ${edu.schoolLogoClass || ''}" loading="lazy">
                     <p>${edu.schoolName}</p>
                 </div>
-                <small>${edu.description}</small>
-            </article>`).join('');
+                <small style="display:block; margin-top: 0.5rem; color: var(--text-soft); font-size: 0.82rem;">${edu.description}</small>
+            </article>`;
+        }).join('');
     }
 
     // Certifications
     const certGrid = document.getElementById('certifications-grid');
     if (certGrid) {
-        certGrid.innerHTML = portfolioData.certifications.map((cert, i) => `
-            <article class="cert-card card" data-provider="${cert.provider}" data-aos="fade-up" data-aos-delay="${(i % 3) * 100}">
+        certGrid.innerHTML = portfolioData.certifications.map((cert, i) => {
+            const bentoClass = (i % 3 === 0) ? 'bento-item-md' : 'bento-item-sm';
+            return `
+            <article class="bento-item ${bentoClass} glass-premium cert-card" data-aos="fade-up" data-aos-delay="${(i % 3) * 100}">
+                <span class="cert-year-tag">${cert.year}</span>
                 <div>
-                    <h3>${cert.title}</h3>
                     <p class="cert-issuer">${cert.issuer}</p>
+                    <h3>${cert.title}</h3>
+                </div>
+                <div style="margin-top: 1rem;">
                     <p class="cert-date">${cert.date}</p>
                     <p class="cert-id">${cert.credentialId}</p>
                 </div>
-                <span>${cert.year}</span>
-            </article>`).join('');
+            </article>`;
+        }).join('');
     }
 
     // Web Projects
@@ -321,6 +329,26 @@ const renderDynamicData = () => {
                     </div>
                 </div>
             </article>`).join('');
+
+    // Testimonials
+    const testimonialsGrid = document.getElementById('testimonials-grid');
+    if (testimonialsGrid && portfolioData.testimonials) {
+        testimonialsGrid.innerHTML = portfolioData.testimonials.map((test, i) => `
+            <article class="testimonial-card card" data-aos="fade-up" data-aos-delay="${(i % 2) * 100}">
+                <div class="testimonial-quote-mark">"</div>
+                <div class="testimonial-stars">
+                    ${[...Array(test.rating)].map(() => '<i class="fas fa-star"></i>').join('')}
+                </div>
+                <p class="testimonial-text">${test.text}</p>
+                <div class="testimonial-author">
+                    <img src="${test.avatar}" alt="Avatar ${test.author}" class="testimonial-avatar" loading="lazy" />
+                    <div class="testimonial-author-info">
+                        <h4>${test.author}</h4>
+                        <p>${test.position}</p>
+                    </div>
+                </div>
+            </article>`).join('');
+    }
     }
 };
 
@@ -390,3 +418,76 @@ const statObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('[data-count-target]').forEach(el => statObserver.observe(el));
+
+/* ============================================================
+   CUSTOM CURSOR & MAGNETIC EFFECT
+   ============================================================ */
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorRing = document.querySelector('.cursor-ring');
+const magneticElements = document.querySelectorAll('.btn, .social-links a, .nav-link, .logo, .project-overlay-btn');
+
+let mouseX = 0, mouseY = 0;
+let dotX = 0, dotY = 0;
+let ringX = 0, ringY = 0;
+
+if (cursorDot && cursorRing) {
+    window.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    const animateCursor = () => {
+        dotX += (mouseX - dotX) * 0.2;
+        dotY += (mouseY - dotY) * 0.2;
+        ringX += (mouseX - ringX) * 0.1;
+        ringY += (mouseY - ringY) * 0.1;
+
+        cursorDot.style.left = `${dotX}px`;
+        cursorDot.style.top = `${dotY}px`;
+        cursorRing.style.left = `${ringX}px`;
+        cursorRing.style.top = `${ringY}px`;
+
+        requestAnimationFrame(animateCursor);
+    };
+    animateCursor();
+
+    const handleHover = () => {
+        document.body.classList.add('cursor-active');
+    };
+    const handleUnhover = () => {
+        document.body.classList.remove('cursor-active');
+    };
+
+    magneticElements.forEach(el => {
+        el.addEventListener('mouseenter', handleHover);
+        el.addEventListener('mouseleave', handleUnhover);
+        
+        // Magnetic Effect
+        el.addEventListener('mousemove', e => {
+            const { clientX: x, clientY: y } = e;
+            const { left, top, width, height } = el.getBoundingClientRect();
+            const centerX = left + width / 2;
+            const centerY = top + height / 2;
+            const moveX = (x - centerX) * 0.3;
+            const moveY = (y - centerY) * 0.3;
+            el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+
+        el.addEventListener('mouseleave', () => {
+            el.style.transform = '';
+        });
+    });
+}
+
+/* ============================================================
+   SCROLL PROGRESS
+   ============================================================ */
+const scrollBar = document.querySelector('.scroll-progress-bar');
+if (scrollBar) {
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        scrollBar.style.width = `${scrolled}%`;
+    });
+}

@@ -1,4 +1,4 @@
-const portfolioData = {
+﻿const portfolioData = {
     experience: [
         {
             period: "Januari 2022 - Oktober 2023",
@@ -182,7 +182,37 @@ const portfolioData = {
                 ]
             }
         ]
-    }
+    },
+    testimonials: [
+        {
+            rating: 5,
+            text: "Ahmad adalah developer yang sangat profesional dan responsif. Dia mampu memahami kebutuhan project dengan cepat dan memberikan solusi yang efisien. Hasil kerjanya melampaui ekspektasi kami.",
+            author: "Budi Santoso",
+            position: "Product Manager at PT Universal Big Data",
+            avatar: "https://i.pravatar.cc/150?img=1"
+        },
+        {
+            rating: 5,
+            text: "Saya terkesan dengan kemampuan Ahmad dalam menguasai berbagai teknologi web development. Dia tidak hanya menyelesaikan pekerjaan dengan baik, tetapi juga memberikan insight yang berharga untuk improvement.",
+            author: "Siti Nurhaliza",
+            position: "Senior Developer at Web Agency",
+            avatar: "https://i.pravatar.cc/150?img=5"
+        },
+        {
+            rating: 5,
+            text: "Sebagai mahasiswa yang mengikuti asistensi Ahmad di laboratorium, saya puas dengan cara mengajarnya yang detail dan sabar. Dia membuat konsep programming menjadi lebih mudah dipahami.",
+            author: "Eka Wijaya",
+            position: "Student at ITATS",
+            avatar: "https://i.pravatar.cc/150?img=8"
+        },
+        {
+            rating: 5,
+            text: "Quality of work dari Ahmad sangat tinggi. Dia selalu deliver projects on time dengan attention to detail yang impressive. Highly recommended untuk kolaborasi profesional.",
+            author: "Reza Pratama",
+            position: "Founder of StartUp Tech",
+            avatar: "https://i.pravatar.cc/150?img=3"
+        }
+    ]
 };
 
 // Make it available globally

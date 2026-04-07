@@ -86,7 +86,18 @@
     </script>
 </head>
 
-<body>
+<body id="top">
+    <!-- Custom Cursor -->
+    <div class="cursor-wrapper" aria-hidden="true">
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress-container" aria-hidden="true">
+        <div class="scroll-progress-bar"></div>
+    </div>
+
     <!-- Skip to content for accessibility -->
     <a href="#home" class="skip-link">Lewati ke konten utama</a>
 
@@ -139,6 +150,27 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- Infinite Marquee Skills -->
+                <div class="marquee-container" data-aos="fade-up" data-aos-delay="400">
+                    <div class="marquee-content">
+                        <div class="marquee-item"><i class="fab fa-laravel"></i> Laravel</div>
+                        <div class="marquee-item"><i class="fab fa-php"></i> PHP</div>
+                        <div class="marquee-item"><i class="fab fa-microsoft"></i> ASP.NET</div>
+                        <div class="marquee-item"><i class="fab fa-js"></i> JavaScript</div>
+                        <div class="marquee-item"><i class="fab fa-react"></i> React Native</div>
+                        <div class="marquee-item"><i class="fas fa-database"></i> MySQL</div>
+                        <div class="marquee-item"><i class="fab fa-git-alt"></i> Git</div>
+                        <!-- Repeat for seamless loop -->
+                        <div class="marquee-item"><i class="fab fa-laravel"></i> Laravel</div>
+                        <div class="marquee-item"><i class="fab fa-php"></i> PHP</div>
+                        <div class="marquee-item"><i class="fab fa-microsoft"></i> ASP.NET</div>
+                        <div class="marquee-item"><i class="fab fa-js"></i> JavaScript</div>
+                        <div class="marquee-item"><i class="fab fa-react"></i> React Native</div>
+                        <div class="marquee-item"><i class="fas fa-database"></i> MySQL</div>
+                        <div class="marquee-item"><i class="fab fa-git-alt"></i> Git</div>
+                    </div>
+                </div>
                 <div class="hero-split" data-aos="fade-up" data-aos-delay="350">
                     <div class="hero-profile-wrap">
                         <div class="image-placeholder">
@@ -180,34 +212,37 @@
                     <p>Ringkasan singkat tentang latar belakang, fokus teknis, dan pengembangan karier saya.</p>
                 </div>
 
-                <div class="about-layout">
-                    <div class="about-text card" data-aos="fade-right" data-aos-delay="100">
+                <div class="bento-grid">
+                    <div class="bento-item bento-item-lg glass-premium" data-aos="fade-right" data-aos-delay="100">
                         <p>
                             Saya adalah mahasiswa Teknik Informatika dari Institut Teknologi Adhi Tama Surabaya yang
-                            aktif
-                            sebagai Asisten Laboratorium untuk praktikum Pemrograman Terstruktur (C++) dan Struktur
-                            Data.
+                            aktif sebagai Asisten Laboratorium untuk praktikum Pemrograman Terstruktur (C++) dan Struktur Data.
                         </p>
-                        <p>
+                        <p style="margin-top: 1rem;">
                             Saya memiliki pengalaman mengembangkan proyek web menggunakan PHP, Laravel, JavaScript,
-                            MySQL,
-                            serta framework Serenity (ASP.NET). Saat ini saya ingin terus mengembangkan kemampuan
-                            melalui
-                            kesempatan profesional dan kolaborasi tim.
+                            MySQL, serta framework Serenity (ASP.NET). Saat ini saya sedang mendalami ekosistem Mobile App dengan React Native.
                         </p>
                     </div>
-                    <div class="about-stats">
-                        <div class="stat card" data-aos="fade-left" data-aos-delay="200">
+                    <div class="bento-item bento-item-md highlight-card glass-premium" data-aos="fade-left" data-aos-delay="200">
+                        <div class="stat-content">
                             <h3>2021</h3>
-                            <p>Mulai pengalaman industri</p>
+                            <p>Mulai Karir Industri</p>
                         </div>
-                        <div class="stat card" data-aos="fade-left" data-aos-delay="300">
-                            <h3>2024</h3>
-                            <p>Asisten Lab ITATS</p>
-                        </div>
-                        <div class="stat card" data-aos="fade-left" data-aos-delay="400">
-                            <h3>5+</h3>
-                            <p>Teknologi inti dikuasai</p>
+                    </div>
+                    <div class="bento-item bento-item-md glass-premium" data-aos="fade-up" data-aos-delay="300">
+                        <h3>2024</h3>
+                        <p>Asisten Lab ITATS</p>
+                    </div>
+                    <div class="bento-item bento-item-lg glass-premium" data-aos="fade-up" data-aos-delay="400">
+                        <div style="display:flex; justify-content: space-around; align-items:center; height:100%;">
+                            <div style="text-align:center;">
+                                <h3 style="color: var(--accent-bright); font-size: 2.5rem;">5+</h3>
+                                <p>Core Tech</p>
+                            </div>
+                            <div style="text-align:center;">
+                                <h3 style="color: var(--accent-indigo); font-size: 2.5rem;">10+</h3>
+                                <p>Projects</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -236,8 +271,8 @@
                     <p>Latar belakang pendidikan yang membentuk fondasi teknis dan analitis saya.</p>
                 </div>
 
-                <div class="edu-grid" id="education-grid">
-                    <!-- Data pendidikan akan di-render di sini oleh JavaScript -->
+                <div class="bento-grid" id="education-grid">
+                    <!-- Data pendidikan akan di-render di sini oleh JavaScript dengan bento classes -->
                 </div>
             </div>
         </section>
@@ -250,7 +285,7 @@
                     <p>Sertifikasi yang relevan dengan pengembangan web modern dan workflow profesional.</p>
                 </div>
 
-                <div class="cert-grid" id="certifications-grid">
+                <div class="bento-grid" id="certifications-grid">
                     <!-- Data sertifikat akan di-render di sini oleh JavaScript -->
                 </div>
                 <div class="cert-more" data-aos="fade-up">
@@ -311,6 +346,20 @@
                             <div class="swiper-button-next"></div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials" aria-label="Testimoni dan Ulasan">
+            <div class="container">
+                <div class="section-head" data-aos="fade-up">
+                    <p class="section-kicker">Kepercayaan Klien</p>
+                    <h2>Testimoni</h2>
+                    <p>Apa kata klien dan rekan kerja mengenai pengalaman bekerja sama dengan saya.</p>
+                </div>
+
+                <div class="testimonials-grid" id="testimonials-grid">
+                    <!-- Data testimoni akan di-render di sini oleh JavaScript -->
                 </div>
             </div>
         </section>
