@@ -389,63 +389,196 @@ section { padding: 120px 0; }
 /* ---- PROJECTS ---- */
 .projects { background: var(--bg); }
 
-.projects-list { display:flex; flex-direction:column; gap:3rem; }
+.pj-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 0;
+}
+.pj-header .section-title { margin-bottom: 0; }
 
-.project-row {
-  display:grid;
-  grid-template-columns: 60px 1fr 1fr;
-  gap:3rem;
-  align-items:start;
-  padding: 2.5rem;
+.pj-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.25rem;
+}
+
+.pj-filter {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: 50px;
+  font-family: var(--body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  transition: var(--t);
+}
+.pj-filter:hover { border-color: var(--primary); color: var(--text); }
+.pj-filter.active {
+  background: var(--primary-g);
+  border-color: rgba(99,102,241,0.4);
+  color: var(--primary);
+}
+.pj-filter-count {
+  background: rgba(99,102,241,0.2);
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 50px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.pj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+
+.pj-card {
+  position: relative;
   background: var(--bg-e);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: var(--t);
+  cursor: pointer;
+  height: 340px;
+}
+.pj-card:hover {
+  border-color: var(--border-h);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+}
+.pj-card.pj-hidden { display: none; }
+
+/* Thumb */
+.pj-thumb {
+  height: 130px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  font-size: 2.75rem;
+  transition: var(--t);
+  overflow: hidden;
+}
+.pj-thumb::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: inherit;
+  filter: brightness(0.7);
+  z-index: 0;
+}
+.pj-thumb > i {
+  position: relative; z-index: 1;
   transition: var(--t);
 }
-.project-row:hover { border-color: var(--border-h); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.pj-card:hover .pj-thumb > i { transform: scale(1.15) translateY(-4px); }
 
-.project-meta { padding-top:0.5rem; }
-.project-num {
-  font-family: var(--display);
-  font-size: 0.75rem;
-  font-weight:700;
-  letter-spacing:0.1em;
-  color: var(--muted);
+.pj-thumb--indigo { background: rgba(99,102,241,0.2); color: #818CF8; }
+.pj-thumb--amber  { background: rgba(245,158,11,0.18); color: #FCD34D; }
+.pj-thumb--teal   { background: rgba(16,185,129,0.18); color: #34D399; }
+.pj-thumb--violet { background: rgba(139,92,246,0.2); color: #A78BFA; }
+.pj-thumb--coral  { background: rgba(239,68,68,0.15); color: #FCA5A5; }
+.pj-thumb--pink   { background: rgba(236,72,153,0.18); color: #F9A8D4; }
+
+.pj-badge {
+  position: absolute; top: 10px; right: 10px; z-index: 2;
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  background: rgba(7,7,15,0.7);
+  color: var(--soft);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(6px);
 }
 
-.project-img-wrap {
-  border-radius: var(--r-md);
-  overflow:hidden;
+.pj-body { padding: 1.25rem 1.25rem 1rem; }
+.pj-body h3 {
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--text); margin-bottom: 0.25rem;
 }
-.project-img-wrap img {
-  width:100%; aspect-ratio:16/10; object-fit:cover;
-  transition: var(--t);
+.pj-sub {
+  font-size: 0.72rem; color: var(--primary);
+  font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; margin-bottom: 0.85rem;
 }
-.project-row:hover .project-img-wrap img { transform:scale(1.03); }
-
-.project-info { display:flex; flex-direction:column; }
-.project-info h3 {
-  font-size:1.7rem; font-weight:800;
-  margin-bottom:0.4rem; color:var(--text);
-}
-.project-sub { font-size:0.8rem; color:var(--primary); font-weight:600; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:1rem; }
-.project-desc { font-size:0.92rem; color:var(--muted); line-height:1.75; margin-bottom:1.5rem; }
-
-.project-tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.5rem; }
+.pj-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .tag {
   background: rgba(99,102,241,0.1);
   border: 1px solid rgba(99,102,241,0.2);
   color: var(--primary);
-  padding: 0.3rem 0.75rem;
+  padding: 0.22rem 0.65rem;
   border-radius: 50px;
-  font-size:0.78rem;
-  font-weight:600;
+  font-size: 0.72rem;
+  font-weight: 600;
 }
 
-.project-impact { display:flex; gap:2rem; }
-.impact-item { display:flex; flex-direction:column; }
-.impact-item strong { font-size:1.4rem; font-weight:800; font-family:var(--display); color:var(--accent); }
-.impact-item span { font-size:0.78rem; color:var(--muted); }
+/* Hover overlay */
+.pj-hover {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 68%;
+  background: linear-gradient(to bottom, rgba(10,10,20,0.97) 0%, var(--bg) 100%);
+  border-top: 1px solid var(--border-h);
+  padding: 1.25rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transform: translateY(100%);
+  transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+}
+.pj-card:hover .pj-hover { transform: translateY(0); }
+
+.pj-hover > p {
+  font-size: 0.85rem; color: var(--soft);
+  line-height: 1.65;
+  flex: 1;
+}
+.pj-impact-row {
+  display: flex; gap: 1.5rem;
+  margin: 0.85rem 0 0.75rem;
+}
+.pj-impact-item { display: flex; flex-direction: column; }
+.pj-impact-item strong {
+  font-family: var(--display);
+  font-size: 1.2rem; font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+.pj-impact-item span { font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem; }
+
+.pj-detail-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--primary);
+  transition: var(--t);
+}
+.pj-detail-link:hover { gap: 0.65rem; color: var(--text); }
+
+.pj-result-count {
+  margin-top: 2rem;
+  font-size: 0.82rem; color: var(--muted);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pj-grid { grid-template-columns: repeat(2, 1fr); }
+  .pj-header { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .pj-grid { grid-template-columns: 1fr; }
+  .pj-card { height: auto; }
+  .pj-hover { position: static; transform: none; height: auto; border-top: 1px solid var(--border); background: transparent; }
+}
+
 
 /* ---- WHY ME ---- */
 .why-me { background: var(--bg-s); }
@@ -752,69 +885,203 @@ section { padding: 120px 0; }
       <div class="section-label reveal">
         <span class="kicker">Bukti Nyata</span>
       </div>
-      <h2 class="section-title reveal">Proyek <em>Unggulan</em></h2>
-
-      <div class="projects-list">
-        <!-- Project 1 -->
-        <div class="project-row reveal">
-          <div class="project-meta">
-            <span class="project-num">01</span>
-          </div>
-          <div class="project-img-wrap">
-            <img src="https://placehold.co/640x400/0d0d14/6366f1?text=Masjidina+SaaS" alt="Masjidina SaaS">
-          </div>
-          <div class="project-info">
-            <h3>Masjidina</h3>
-            <p class="project-sub">Enterprise SaaS — Manajemen Masjid</p>
-            <p class="project-desc">Platform SaaS dengan dashboard manajemen keuangan dan donasi real-time untuk ratusan masjid di Indonesia. Meningkatkan transparansi dan efisiensi secara signifikan.</p>
-            <div class="project-tags">
-              <span class="tag">Laravel</span>
-              <span class="tag">MySQL</span>
-              <span class="tag">Bootstrap</span>
-            </div>
-            <div class="project-impact">
-              <div class="impact-item">
-                <strong>100+</strong>
-                <span>Masjid Terdaftar</span>
-              </div>
-              <div class="impact-item">
-                <strong>↑ 80%</strong>
-                <span>Transparansi</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-row reveal">
-          <div class="project-meta">
-            <span class="project-num">02</span>
-          </div>
-          <div class="project-img-wrap">
-            <img src="https://placehold.co/640x400/0d0d14/f59e0b?text=AI+Reservation+Engine" alt="AI Reservation">
-          </div>
-          <div class="project-info">
-            <h3>AI Reservation Engine</h3>
-            <p class="project-sub">Chatbot AI — Industri F&amp;B</p>
-            <p class="project-desc">Chatbot AI yang terintegrasi otomatis dengan sistem inventaris meja, mengurangi beban operasional staf restoran hingga 40% dan mempercepat proses booking.</p>
-            <div class="project-tags">
-              <span class="tag">Node.js</span>
-              <span class="tag">DialogFlow</span>
-              <span class="tag">PostgreSQL</span>
-            </div>
-            <div class="project-impact">
-              <div class="impact-item">
-                <strong>↓ 40%</strong>
-                <span>Beban Operasional</span>
-              </div>
-              <div class="impact-item">
-                <strong>3×</strong>
-                <span>Kecepatan Booking</span>
-              </div>
-            </div>
-          </div>
+      <div class="pj-header">
+        <h2 class="section-title reveal">Proyek <em>Unggulan</em></h2>
+        <div class="pj-filters reveal">
+          <button class="pj-filter active" data-cat="all">Semua <span class="pj-filter-count" id="pj-total"></span></button>
+          <button class="pj-filter" data-cat="web">Web App</button>
+          <button class="pj-filter" data-cat="api">Backend / API</button>
+          <button class="pj-filter" data-cat="saas">SaaS</button>
+          <button class="pj-filter" data-cat="ai">AI / Bot</button>
+          <button class="pj-filter" data-cat="mobile">Mobile</button>
         </div>
       </div>
+
+      <div class="pj-grid" id="pj-grid">
+
+        <div class="pj-card reveal" data-cat="saas">
+          <div class="pj-thumb pj-thumb--teal">
+            <i class="fas fa-mosque"></i>
+            <span class="pj-badge">SaaS</span>
+          </div>
+          <div class="pj-body">
+            <h3>Masjidina</h3>
+            <p class="pj-sub">Enterprise SaaS — Manajemen Masjid</p>
+            <div class="pj-tags"><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
+          </div>
+          <div class="pj-hover">
+            <p>Platform SaaS dengan dashboard manajemen keuangan dan donasi real-time untuk ratusan masjid di Indonesia.</p>
+            <div class="pj-impact-row">
+              <div class="pj-impact-item"><strong>100+</strong><span>Masjid</span></div>
+              <div class="pj-impact-item"><strong>↑80%</strong><span>Transparansi</span></div>
+            </div>
+            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="pj-card reveal" style="--d:80ms" data-cat="ai">
+          <div class="pj-thumb pj-thumb--amber">
+            <i class="fas fa-robot"></i>
+            <span class="pj-badge">AI / Bot</span>
+          </div>
+          <div class="pj-body">
+            <h3>AI Reservation Engine</h3>
+            <p class="pj-sub">Chatbot AI — Industri F&amp;B</p>
+            <div class="pj-tags"><span class="tag">Node.js</span><span class="tag">DialogFlow</span><span class="tag">PostgreSQL</span></div>
+          </div>
+          <div class="pj-hover">
+            <p>Chatbot AI terintegrasi otomatis dengan sistem inventaris meja, mengurangi beban operasional staf restoran.</p>
+            <div class="pj-impact-row">
+              <div class="pj-impact-item"><strong>↓40%</strong><span>Beban Ops</span></div>
+              <div class="pj-impact-item"><strong>3×</strong><span>Kec. Booking</span></div>
+            </div>
+            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="pj-card reveal" style="--d:160ms" data-cat="web">
+          <div class="pj-thumb pj-thumb--indigo">
+            <i class="fas fa-boxes-stacked"></i>
+            <span class="pj-badge">Web App</span>
+          </div>
+          <div class="pj-body">
+            <h3>Inventory Tracker</h3>
+            <p class="pj-sub">Web App — Manajemen Stok</p>
+            <div class="pj-tags"><span class="tag">Laravel</span><span class="tag">Vue.js</span><span class="tag">Redis</span></div>
+          </div>
+          <div class="pj-hover">
+            <p>Sistem manajemen stok multi-gudang dengan real-time sync, laporan otomatis, dan notifikasi stok kritis.</p>
+            <div class="pj-impact-row">
+              <div class="pj-impact-item"><strong>5</strong><span>Gudang</span></div>
+              <div class="pj-impact-item"><strong>↓60%</strong><span>Stok Error</span></div>
+            </div>
+            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="pj-card reveal" style="--d:0ms" data-cat="api">
+          <div class="pj-thumb pj-thumb--violet">
+            <i class="fas fa-credit-card"></i>
+            <span class="pj-badge">Backend / API</span>
+          </div>
+          <div class="pj-body">
+            <h3>Payment Gateway API</h3>
+            <p class="pj-sub">Backend — Fintech</p>
+            <div class="pj-tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Stripe</span></div>
+          </div>
+          <div class="pj-hover">
+            <p>Integrasi multi-payment provider (Stripe, Midtrans, DOKU) dengan sistem reconciliation otomatis.</p>
+            <div class="pj-impact-row">
+              <div class="pj-impact-item"><strong>3</strong><span>Provider</span></div>
+              <div class="pj-impact-item"><strong>99.9%</strong><span>Uptime</span></div>
+            </div>
+            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="pj-card reveal" style="--d:80ms" data-cat="web">
+          <div class="pj-thumb pj-thumb--coral">
+            <i class="fas fa-users"></i>
+            <span class="pj-badge">Web App</span>
+          </div>
+          <div class="pj-body">
+            <h3>HR Management System</h3>
+            <p class="pj-sub">Web App — Manajemen SDM</p>
+            <div class="pj-tags"><span class="tag">Laravel</span><span class="tag">Tailwind</span><span class="tag">MySQL</span></div>
+          </div>
+          <div class="pj-hover">
+            <p>Sistem absensi, payroll, dan evaluasi karyawan terintegrasi. Dilengkapi laporan HR bulanan otomatis.</p>
+            <div class="pj-impact-row">
+              <div class="pj-impact-item"><strong>200+</strong><span>Karyawan</span></div>
+              <div class="pj-impact-item"><strong>↓70%</strong><span>Waktu Admin</span></div>
+            </div>
+            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="pj-card reveal" style="--d:160ms" data-cat="api">
+          <div class="pj-thumb pj-thumb--teal">
+            <i class="fas fa-list-ol"></i>
+            <span class="pj-badge">Backend / API</span>
+          </div>
+          <div class="pj-body">
+            <h3>Smart Queue System</h3>
+            <p class="pj-sub">Backend — Sistem Antrian Digital</p>
+            <div class="pj-tags"><span class="tag">Go</span><span class="tag">Redis</span><span class="tag">Twilio</span></div>
+          </div>
+          <div class="pj-hover">
+            <p>Antrian digital dengan notifikasi SMS real-time. Digunakan di klinik dan BPJS untuk mengurangi kepadatan antrian fisik.</p>
+            <div class="pj-impact-row">
+              <div class="pj-impact-item"><strong>↓50%</strong><span>Waktu Tunggu</span></div>
+              <div class="pj-impact-item"><strong>1k+</strong><span>Req/menit</span></div>
+            </div>
+            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="pj-card reveal" style="--d:0ms" data-cat="saas">
+          <div class="pj-thumb pj-thumb--indigo">
+            <i class="fas fa-graduation-cap"></i>
+            <span class="pj-badge">SaaS</span>
+          </div>
+          <div class="pj-body">
+            <h3>E-Learning Platform</h3>
+            <p class="pj-sub">SaaS — Learning Management</p>
+            <div class="pj-tags"><span class="tag">Laravel</span><span class="tag">HLS.js</span><span class="tag">AWS S3</span></div>
+          </div>
+          <div class="pj-hover">
+            <p>LMS dengan video streaming adaptif, sistem quiz interaktif, sertifikat otomatis, dan dashboard instruktur.</p>
+            <div class="pj-impact-row">
+              <div class="pj-impact-item"><strong>500+</strong><span>Siswa Aktif</span></div>
+              <div class="pj-impact-item"><strong>50+</strong><span>Kursus</span></div>
+            </div>
+            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="pj-card reveal" style="--d:80ms" data-cat="mobile">
+          <div class="pj-thumb pj-thumb--pink">
+            <i class="fas fa-truck"></i>
+            <span class="pj-badge">Mobile</span>
+          </div>
+          <div class="pj-body">
+            <h3>Logistic Tracker App</h3>
+            <p class="pj-sub">Mobile — Pelacakan Pengiriman</p>
+            <div class="pj-tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Maps API</span></div>
+          </div>
+          <div class="pj-hover">
+            <p>Aplikasi mobile pelacakan pengiriman realtime dengan notifikasi push, riwayat pengiriman, dan bukti foto.</p>
+            <div class="pj-impact-row">
+              <div class="pj-impact-item"><strong>2k+</strong><span>Pengguna</span></div>
+              <div class="pj-impact-item"><strong>4.8★</strong><span>Rating</span></div>
+            </div>
+            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="pj-card reveal" style="--d:160ms" data-cat="ai">
+          <div class="pj-thumb pj-thumb--amber">
+            <i class="fas fa-comment-dots"></i>
+            <span class="pj-badge">AI / Bot</span>
+          </div>
+          <div class="pj-body">
+            <h3>Customer Service Bot</h3>
+            <p class="pj-sub">AI / Bot — Layanan Pelanggan</p>
+            <div class="pj-tags"><span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">WebSocket</span></div>
+          </div>
+          <div class="pj-hover">
+            <p>Chatbot CS dengan kemampuan handoff ke agen manusia. Memahami konteks percakapan panjang menggunakan GPT.</p>
+            <div class="pj-impact-row">
+              <div class="pj-impact-item"><strong>↓65%</strong><span>Tiket CS</span></div>
+              <div class="pj-impact-item"><strong>24/7</strong><span>Availability</span></div>
+            </div>
+            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="pj-result-count" id="pj-result"></p>
     </div>
   </section>
 
@@ -998,6 +1265,31 @@ const counterObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 counters.forEach(c => counterObserver.observe(c));
+
+
+// Projects filter
+const pjFilters = document.querySelectorAll('.pj-filter');
+const pjCards = document.querySelectorAll('.pj-card');
+const pjTotal = document.getElementById('pj-total');
+const pjResult = document.getElementById('pj-result');
+
+if (pjTotal) pjTotal.textContent = pjCards.length;
+if (pjResult) pjResult.textContent = pjCards.length + ' proyek ditampilkan';
+
+pjFilters.forEach(btn => {
+  btn.addEventListener('click', () => {
+    pjFilters.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    let visible = 0;
+    pjCards.forEach(card => {
+      const show = cat === 'all' || card.dataset.cat === cat;
+      card.classList.toggle('pj-hidden', !show);
+      if (show) visible++;
+    });
+    if (pjResult) pjResult.textContent = visible + ' proyek ditampilkan';
+  });
+});
 
 // Swiper
 new Swiper('.testimonialSwiper', {
