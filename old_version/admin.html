@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Ismaindra Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-s: #1e293b;
+      --primary: #6366f1;
+      --primary-h: #4f46e5;
+      --text: #f8fafc;
+      --soft: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+      --r: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: var(--bg-s);
+      border-right: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 3rem;
+    }
+    .logo span { color: var(--primary); }
+
+    .nav-links { list-style: none; }
+    .nav-item {
+      padding: 0.85rem 1rem;
+      border-radius: var(--r);
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--soft);
+      transition: all 0.2s;
+    }
+    .nav-item:hover, .nav-item.active {
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--text);
+    }
+    .nav-item.active { color: var(--primary); }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      padding: 2.5rem;
+      overflow-y: auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+    h1 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.75rem; }
+
+    .btn {
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-h); transform: translateY(-2px); }
+
+    /* Project Table */
+    .card {
+      background: var(--bg-s);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th {
+      text-align: left;
+      padding: 1rem;
+      color: var(--soft);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 1.25rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    tr:last-child td { border-bottom: none; }
+
+    .pj-info h4 { margin-bottom: 4px; }
+    .pj-info span { font-size: 0.8rem; color: var(--soft); }
+
+    .tag-badge {
+      background: rgba(255,255,255,0.05);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      margin-right: 4px;
+    }
+
+    .actions { display: flex; gap: 10px; }
+    .btn-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      color: var(--soft);
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-icon:hover.edit { color: var(--primary); background: rgba(99, 102, 241, 0.1); }
+    .btn-icon:hover.delete { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 15, 30, 0.8);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal.open { display: flex; }
+    .modal-content {
+      background: #1e293b;
+      width: 90%;
+      max-width: 800px;
+      border-radius: 24px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group.full { grid-column: span 2; }
+    label { display: block; margin-bottom: 8px; color: var(--soft); font-size: 0.9rem; }
+    input, select, textarea {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: white;
+      font-family: inherit;
+    }
+    input:focus { outline: 2px solid var(--primary); }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="logo">Ismaindra<span>.</span> Admin</div>
+    <ul class="nav-links">
+      <li class="nav-item active"><i class="fas fa-project-diagram"></i> Projects</li>
+      <li class="nav-item"><i class="fas fa-concierge-bell"></i> Services</li>
+      <li class="nav-item"><i class="fas fa-comment"></i> Testimonials</li>
+      <li class="nav-item"><i class="fas fa-cog"></i> Settings</li>
+    </ul>
+    <div style="margin-top: auto; padding-top: 2rem;">
+      <a href="index.html" style="color: var(--soft); text-decoration: none; font-size: 0.9rem;">
+        <i class="fas fa-arrow-left"></i> Back to Site
+      </a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header>
+      <h1>Portfolio Management</h1>
+      <button class="btn btn-primary" id="add-btn"><i class="fas fa-plus"></i> Add Project</button>
+    </header>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Project Details</th>
+            <th>Category</th>
+            <th>Impact</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="project-list">
+          <!-- Projects will be loaded here -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Modal for Add/Edit -->
+  <div class="modal" id="pj-modal">
+    <div class="modal-content">
+      <h2 style="margin-bottom: 1.5rem;" id="modal-title">Add New Project</h2>
+      <form id="project-form">
+        <input type="hidden" id="pj-id">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Project Title</label>
+            <input type="text" id="title" required>
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="category">
+              <option value="web">Web App</option>
+              <option value="api">Backend / API</option>
+              <option value="saas">SaaS</option>
+              <option value="ai">AI / Bot</option>
+              <option value="mobile">Mobile</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Sub Title</label>
+            <input type="text" id="sub_title" placeholder="e.g. Fintech Solution">
+          </div>
+          <div class="form-group">
+            <label>Badge</label>
+            <input type="text" id="badge" placeholder="e.g. Web App">
+          </div>
+          <div class="form-group full">
+            <label>Description</label>
+            <textarea id="description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Tags (comma separated)</label>
+            <input type="text" id="tags" placeholder="Laravel, Vue, Redis">
+          </div>
+          <div class="form-group">
+            <label>Impact 1 (Value | Label)</label>
+            <div style="display:flex; gap:10px;">
+              <input type="text" id="iv1" placeholder="Value">
+              <input type="text" id="il1" placeholder="Label">
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; justify-content: flex-end; gap: 12px; margin-top: 2rem;">
+          <button type="button" class="btn" style="background:transparent; color:white; border:1px solid var(--border);" id="cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = 'http://localhost:3000/api/projects';
+    const projectList = document.getElementById('project-list');
+    const modal = document.getElementById('pj-modal');
+    const projectForm = document.getElementById('project-form');
+
+    // Fetch projects
+    async function loadProjects() {
+      try {
+        const res = await fetch(API_URL);
+        const projects = await res.json();
+        projectList.innerHTML = projects.map(p => `
+          <tr>
+            <td>
+              <div class="pj-info">
+                <h4>${p.title}</h4>
+                <span>${p.sub_title}</span>
+              </div>
+            </td>
+            <td><span class="tag-badge">${p.category}</span></td>
+            <td>
+              <div style="font-size: 0.85rem;">
+                <strong>${p.impact_value_1}</strong> ${p.impact_label_1}
+              </div>
+            </td>
+            <td>
+              <div class="actions">
+                <button class="btn-icon edit" onclick="editProject(${p.id})"><i class="fas fa-edit"></i></button>
+                <button class="btn-icon delete" onclick="deleteProject(${p.id})"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+        `).join('');
+      } catch (e) { console.error('Failed to load projects', e); }
+    }
+
+    // Add / Edit
+    document.getElementById('add-btn').onclick = () => {
+      projectForm.reset();
+      document.getElementById('pj-id').value = '';
+      document.getElementById('modal-title').textContent = 'Add New Project';
+      modal.classList.add('open');
+    };
+
+    document.getElementById('cancel-btn').onclick = () => modal.classList.remove('open');
+
+    projectForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('pj-id').value;
+      const data = {
+        title: document.getElementById('title').value,
+        category: document.getElementById('category').value,
+        sub_title: document.getElementById('sub_title').value,
+        badge: document.getElementById('badge').value,
+        description: document.getElementById('description').value,
+        tags: document.getElementById('tags').value.split(',').map(t => t.trim()),
+        impact_value_1: document.getElementById('iv1').value,
+        impact_label_1: document.getElementById('il1').value
+      };
+
+      const method = id ? 'PUT' : 'POST';
+      const url = id ? `${API_URL}/${id}` : API_URL;
+
+      await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      modal.classList.remove('open');
+      loadProjects();
+    };
+
+    async function editProject(id) {
+      const res = await fetch(`${API_URL}/${id}`);
+      const p = await res.json();
+      document.getElementById('pj-id').value = p.id;
+      document.getElementById('title').value = p.title;
+      document.getElementById('category').value = p.category;
+      document.getElementById('sub_title').value = p.sub_title;
+      document.getElementById('badge').value = p.badge;
+      document.getElementById('description').value = p.description;
+      document.getElementById('tags').value = p.tags ? p.tags.join(', ') : '';
+      document.getElementById('iv1').value = p.impact_value_1;
+      document.getElementById('il1').value = p.impact_label_1;
+
+      document.getElementById('modal-title').textContent = 'Edit Project';
+      modal.classList.add('open');
+    }
+
+    async function deleteProject(id) {
+      if (!confirm('Are you sure?')) return;
+      await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+      loadProjects();
+    }
+
+    loadProjects();
+  </script>
+</body>
+</html>

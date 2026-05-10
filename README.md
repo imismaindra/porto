@@ -1,189 +1,36 @@
-# Web Portfolio Blueprint
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Ini adalah blueprint (struktur dasar) untuk website portfolio profesional Anda.
+## Getting Started
 
-## 📁 Struktur Folder
+First, run the development server:
 
-```
-porto/
-├── index.html           # Halaman utama
-├── css/
-│   └── style.css       # Styling utama
-├── js/
-│   └── script.js       # JavaScript interaktif
-├── images/             # Folder untuk gambar proyek
-├── README.md           # File ini
-└── assets/             # Folder tambahan untuk asset lainnya
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## 🎯 Fitur yang Tersedia
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### 1. **Navigation Bar**
-   - Menu responsif dengan hamburger menu untuk mobile
-   - Sticky navigation untuk akses mudah
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### 2. **Hero Section**
-   - Headline yang menarik
-   - Call-to-action buttons
-   - Placeholder untuk foto profil
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### 3. **About Section**
-   - Deskripsi diri profesional
-   - Statistik pengalaman dan projek
+## Learn More
 
-### 4. **Projects Section**
-   - Grid layout untuk menampilkan proyek
-   - Kartu proyek dengan gambar dan deskripsi
-   - Tag teknologi untuk setiap proyek
+To learn more about Next.js, take a look at the following resources:
 
-### 5. **Skills Section**
-   - Kategori keahlian (Frontend, Backend, Tools)
-   - Daftar skills yang terorganisir
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### 6. **Contact Section**
-   - Form kontak interaktif
-   - Informasi kontak lengkap
-   - Social media links
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### 7. **Responsive Design**
-   - Mobile-first approach
-   - Optimal untuk semua ukuran layar
-   - Smooth animations dan transitions
+## Deploy on Vercel
 
-## 🚀 Cara Menggunakan
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### 1. Personalisasi Data
-Edit file `index.html` dan ganti:
-- "Nama Anda" dengan nama lengkap Anda
-- "email@anda.com" dengan email Anda
-- "+62 XXX-XXXX-XXXX" dengan nomor telepon
-- Deskripsi dan informasi lainnya sesuai kebutuhan
-
-### 2. Tambah Proyek
-Di section projects, tambahkan lebih banyak kartu proyek dengan format:
-```html
-<div class="project-card">
-    <div class="project-image">
-        <img src="images/projectX.jpg" alt="Proyek X">
-    </div>
-    <div class="project-info">
-        <h3>Nama Proyek</h3>
-        <p>Deskripsi proyek</p>
-        <div class="project-tags">
-            <span class="tag">Teknologi</span>
-        </div>
-        <a href="#" class="project-link">Lihat Proyek</a>
-    </div>
-</div>
-```
-
-### 3. Tambah Gambar
-- Letakkan gambar proyek di folder `images/`
-- Update src pada `<img>` tag sesuai nama file
-
-### 4. Customize Warna
-Edit file `css/style.css` dan ubah warna di bagian `:root`:
-```css
-:root {
-    --primary-color: #6366f1;      /* Ubah warna utama */
-    --secondary-color: #8b5cf6;    /* Ubah warna sekunder */
-    --dark-color: #1f2937;
-    --light-color: #f9fafb;
-    /* ... */
-}
-```
-
-## 🎨 Color Palette (Default)
-- **Primary**: `#6366f1` (Indigo)
-- **Secondary**: `#8b5cf6` (Purple)
-- **Dark**: `#1f2937` (Dark Gray)
-- **Light**: `#f9fafb` (Light Gray)
-
-## 📦 Dependencies
-- Font Awesome Icons (CDN dari CDNJS)
-- Tidak perlu install package apapun
-
-## ✨ Fitur Interaktif
-- Smooth scrolling saat navigasi
-- Mobile menu toggle
-- Scroll animation untuk sections
-- Form submission handling
-- Social media links
-
-## 🔧 Customize Lebih Lanjut
-
-### Tambah Dark Mode
-Edit `css/style.css` dan tambahkan:
-```css
-body.dark-mode {
-    background: #1f2937;
-    color: #f9fafb;
-}
-```
-
-### Integrasikan dengan Backend
-Di `js/script.js`, ganti form handling dengan:
-```javascript
-// Kirim ke backend/email service
-fetch('/api/contact', {
-    method: 'POST',
-    body: JSON.stringify(data)
-})
-```
-
-### Tambah Analytics
-Tambahkan Google Analytics atau Umami ke dalam `<head>` tag di `index.html`
-
-## 📱 Browser Support
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
-
-## 🚀 Deployment Options
-1. **Netlify** - Drag & drop deploy
-2. **Vercel** - Connected git deploy
-3. **GitHub Pages** - Free hosting
-4. **Traditional Hosting** - Upload via FTP
-
-## 💡 Tips
-- Gunakan gambar berkualitas tinggi untuk proyek
-- Update portfolio secara berkala dengan proyek terbaru
-- Pastikan semua link eksternal bekerja dengan baik
-- Test di berbagai device sebelum launch
-- Optimize gambar untuk loading cepat
-
-## 📝 To-Do Checklist
-- [ ] Ganti nama dan informasi pribadi
-- [ ] Tambah foto profil
-- [ ] Update daftar skills
-- [ ] Tambah proyek aktual
-- [ ] Ganti link social media
-- [ ] Setup form kontak (backend)
-- [ ] Test responsiveness
-- [ ] Optimize untuk SEO
-- [ ] Deploy ke hosting
-
----
-**Happy coding! 🎉**
-
-## Deploy ke Vercel
-
-Project ini sudah siap deploy sebagai static site menggunakan file `vercel.json`.
-
-### Opsi 1: Deploy dari Git (disarankan)
-1. Push project ini ke GitHub/GitLab/Bitbucket.
-2. Masuk ke Vercel dan pilih **Add New -> Project**.
-3. Import repository ini.
-4. Klik **Deploy** (konfigurasi sudah dibaca dari `vercel.json`).
-
-### Opsi 2: Deploy via CLI
-1. Jalankan `npx vercel`.
-2. Ikuti prompt sampai deployment preview selesai.
-3. Untuk production, jalankan `npx vercel --prod`.
-
-### Catatan konfigurasi
-- `framework: null` -> diperlakukan sebagai proyek non-framework (static).
-- `buildCommand: null` -> tidak ada proses build.
-- `outputDirectory: "."` -> file di root proyek langsung dipublish.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

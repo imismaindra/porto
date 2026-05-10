@@ -1,21 +1,27 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "description": "Web Portfolio Website",
-  "main": "index.html",
+  "name": "porto",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "python -m http.server 8000",
-    "build": "echo 'Build script here'",
-    "test": "echo 'Test script here'"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
-  "keywords": [
-    "portfolio",
-    "web developer",
-    "showcase"
-  ],
-  "author": "Nama Anda",
-  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "mysql2": "^3.22.3",
+    "next": "16.2.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "swiper": "^12.1.4"
+  },
   "devDependencies": {
-    "prettier": "^3.0.0"
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "typescript": "^5"
   }
 }

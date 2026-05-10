@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/admin.css">
 
   <style>
 /* ============================================
@@ -898,187 +899,11 @@ section { padding: 120px 0; }
       </div>
 
       <div class="pj-grid" id="pj-grid">
-
-        <div class="pj-card reveal" data-cat="saas">
-          <div class="pj-thumb pj-thumb--teal">
-            <i class="fas fa-mosque"></i>
-            <span class="pj-badge">SaaS</span>
-          </div>
-          <div class="pj-body">
-            <h3>Masjidina</h3>
-            <p class="pj-sub">Enterprise SaaS — Manajemen Masjid</p>
-            <div class="pj-tags"><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
-          </div>
-          <div class="pj-hover">
-            <p>Platform SaaS dengan dashboard manajemen keuangan dan donasi real-time untuk ratusan masjid di Indonesia.</p>
-            <div class="pj-impact-row">
-              <div class="pj-impact-item"><strong>100+</strong><span>Masjid</span></div>
-              <div class="pj-impact-item"><strong>↑80%</strong><span>Transparansi</span></div>
-            </div>
-            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-          </div>
+        <!-- Projects will be loaded from Supabase -->
+        <div class="loading-state" style="grid-column: 1/-1; text-align: center; padding: 50px; color: #94a3b8;">
+          <i class="fas fa-spinner fa-spin fa-2x"></i>
+          <p style="margin-top: 15px;">Memuat proyek...</p>
         </div>
-
-        <div class="pj-card reveal" style="--d:80ms" data-cat="ai">
-          <div class="pj-thumb pj-thumb--amber">
-            <i class="fas fa-robot"></i>
-            <span class="pj-badge">AI / Bot</span>
-          </div>
-          <div class="pj-body">
-            <h3>AI Reservation Engine</h3>
-            <p class="pj-sub">Chatbot AI — Industri F&amp;B</p>
-            <div class="pj-tags"><span class="tag">Node.js</span><span class="tag">DialogFlow</span><span class="tag">PostgreSQL</span></div>
-          </div>
-          <div class="pj-hover">
-            <p>Chatbot AI terintegrasi otomatis dengan sistem inventaris meja, mengurangi beban operasional staf restoran.</p>
-            <div class="pj-impact-row">
-              <div class="pj-impact-item"><strong>↓40%</strong><span>Beban Ops</span></div>
-              <div class="pj-impact-item"><strong>3×</strong><span>Kec. Booking</span></div>
-            </div>
-            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="pj-card reveal" style="--d:160ms" data-cat="web">
-          <div class="pj-thumb pj-thumb--indigo">
-            <i class="fas fa-boxes-stacked"></i>
-            <span class="pj-badge">Web App</span>
-          </div>
-          <div class="pj-body">
-            <h3>Inventory Tracker</h3>
-            <p class="pj-sub">Web App — Manajemen Stok</p>
-            <div class="pj-tags"><span class="tag">Laravel</span><span class="tag">Vue.js</span><span class="tag">Redis</span></div>
-          </div>
-          <div class="pj-hover">
-            <p>Sistem manajemen stok multi-gudang dengan real-time sync, laporan otomatis, dan notifikasi stok kritis.</p>
-            <div class="pj-impact-row">
-              <div class="pj-impact-item"><strong>5</strong><span>Gudang</span></div>
-              <div class="pj-impact-item"><strong>↓60%</strong><span>Stok Error</span></div>
-            </div>
-            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="pj-card reveal" style="--d:0ms" data-cat="api">
-          <div class="pj-thumb pj-thumb--violet">
-            <i class="fas fa-credit-card"></i>
-            <span class="pj-badge">Backend / API</span>
-          </div>
-          <div class="pj-body">
-            <h3>Payment Gateway API</h3>
-            <p class="pj-sub">Backend — Fintech</p>
-            <div class="pj-tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Stripe</span></div>
-          </div>
-          <div class="pj-hover">
-            <p>Integrasi multi-payment provider (Stripe, Midtrans, DOKU) dengan sistem reconciliation otomatis.</p>
-            <div class="pj-impact-row">
-              <div class="pj-impact-item"><strong>3</strong><span>Provider</span></div>
-              <div class="pj-impact-item"><strong>99.9%</strong><span>Uptime</span></div>
-            </div>
-            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="pj-card reveal" style="--d:80ms" data-cat="web">
-          <div class="pj-thumb pj-thumb--coral">
-            <i class="fas fa-users"></i>
-            <span class="pj-badge">Web App</span>
-          </div>
-          <div class="pj-body">
-            <h3>HR Management System</h3>
-            <p class="pj-sub">Web App — Manajemen SDM</p>
-            <div class="pj-tags"><span class="tag">Laravel</span><span class="tag">Tailwind</span><span class="tag">MySQL</span></div>
-          </div>
-          <div class="pj-hover">
-            <p>Sistem absensi, payroll, dan evaluasi karyawan terintegrasi. Dilengkapi laporan HR bulanan otomatis.</p>
-            <div class="pj-impact-row">
-              <div class="pj-impact-item"><strong>200+</strong><span>Karyawan</span></div>
-              <div class="pj-impact-item"><strong>↓70%</strong><span>Waktu Admin</span></div>
-            </div>
-            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="pj-card reveal" style="--d:160ms" data-cat="api">
-          <div class="pj-thumb pj-thumb--teal">
-            <i class="fas fa-list-ol"></i>
-            <span class="pj-badge">Backend / API</span>
-          </div>
-          <div class="pj-body">
-            <h3>Smart Queue System</h3>
-            <p class="pj-sub">Backend — Sistem Antrian Digital</p>
-            <div class="pj-tags"><span class="tag">Go</span><span class="tag">Redis</span><span class="tag">Twilio</span></div>
-          </div>
-          <div class="pj-hover">
-            <p>Antrian digital dengan notifikasi SMS real-time. Digunakan di klinik dan BPJS untuk mengurangi kepadatan antrian fisik.</p>
-            <div class="pj-impact-row">
-              <div class="pj-impact-item"><strong>↓50%</strong><span>Waktu Tunggu</span></div>
-              <div class="pj-impact-item"><strong>1k+</strong><span>Req/menit</span></div>
-            </div>
-            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="pj-card reveal" style="--d:0ms" data-cat="saas">
-          <div class="pj-thumb pj-thumb--indigo">
-            <i class="fas fa-graduation-cap"></i>
-            <span class="pj-badge">SaaS</span>
-          </div>
-          <div class="pj-body">
-            <h3>E-Learning Platform</h3>
-            <p class="pj-sub">SaaS — Learning Management</p>
-            <div class="pj-tags"><span class="tag">Laravel</span><span class="tag">HLS.js</span><span class="tag">AWS S3</span></div>
-          </div>
-          <div class="pj-hover">
-            <p>LMS dengan video streaming adaptif, sistem quiz interaktif, sertifikat otomatis, dan dashboard instruktur.</p>
-            <div class="pj-impact-row">
-              <div class="pj-impact-item"><strong>500+</strong><span>Siswa Aktif</span></div>
-              <div class="pj-impact-item"><strong>50+</strong><span>Kursus</span></div>
-            </div>
-            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="pj-card reveal" style="--d:80ms" data-cat="mobile">
-          <div class="pj-thumb pj-thumb--pink">
-            <i class="fas fa-truck"></i>
-            <span class="pj-badge">Mobile</span>
-          </div>
-          <div class="pj-body">
-            <h3>Logistic Tracker App</h3>
-            <p class="pj-sub">Mobile — Pelacakan Pengiriman</p>
-            <div class="pj-tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Maps API</span></div>
-          </div>
-          <div class="pj-hover">
-            <p>Aplikasi mobile pelacakan pengiriman realtime dengan notifikasi push, riwayat pengiriman, dan bukti foto.</p>
-            <div class="pj-impact-row">
-              <div class="pj-impact-item"><strong>2k+</strong><span>Pengguna</span></div>
-              <div class="pj-impact-item"><strong>4.8★</strong><span>Rating</span></div>
-            </div>
-            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <div class="pj-card reveal" style="--d:160ms" data-cat="ai">
-          <div class="pj-thumb pj-thumb--amber">
-            <i class="fas fa-comment-dots"></i>
-            <span class="pj-badge">AI / Bot</span>
-          </div>
-          <div class="pj-body">
-            <h3>Customer Service Bot</h3>
-            <p class="pj-sub">AI / Bot — Layanan Pelanggan</p>
-            <div class="pj-tags"><span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">WebSocket</span></div>
-          </div>
-          <div class="pj-hover">
-            <p>Chatbot CS dengan kemampuan handoff ke agen manusia. Memahami konteks percakapan panjang menggunakan GPT.</p>
-            <div class="pj-impact-row">
-              <div class="pj-impact-item"><strong>↓65%</strong><span>Tiket CS</span></div>
-              <div class="pj-impact-item"><strong>24/7</strong><span>Availability</span></div>
-            </div>
-            <a href="#" class="pj-detail-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-
       </div>
 
       <p class="pj-result-count" id="pj-result"></p>
@@ -1207,6 +1032,7 @@ section { padding: 120px 0; }
   </div>
 </footer>
 
+<script src="js/app.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 // Typewriter
@@ -1242,10 +1068,10 @@ document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', 
 
 // Reveal on scroll
 const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+window.observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); window.observer.unobserve(e.target); } });
 }, { threshold: 0.1 });
-reveals.forEach(el => observer.observe(el));
+reveals.forEach(el => window.observer.observe(el));
 
 // Counter
 const counters = document.querySelectorAll('.stat-num');
@@ -1266,30 +1092,6 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 counters.forEach(c => counterObserver.observe(c));
 
-
-// Projects filter
-const pjFilters = document.querySelectorAll('.pj-filter');
-const pjCards = document.querySelectorAll('.pj-card');
-const pjTotal = document.getElementById('pj-total');
-const pjResult = document.getElementById('pj-result');
-
-if (pjTotal) pjTotal.textContent = pjCards.length;
-if (pjResult) pjResult.textContent = pjCards.length + ' proyek ditampilkan';
-
-pjFilters.forEach(btn => {
-  btn.addEventListener('click', () => {
-    pjFilters.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const cat = btn.dataset.cat;
-    let visible = 0;
-    pjCards.forEach(card => {
-      const show = cat === 'all' || card.dataset.cat === cat;
-      card.classList.toggle('pj-hidden', !show);
-      if (show) visible++;
-    });
-    if (pjResult) pjResult.textContent = visible + ' proyek ditampilkan';
-  });
-});
 
 // Swiper
 new Swiper('.testimonialSwiper', {
