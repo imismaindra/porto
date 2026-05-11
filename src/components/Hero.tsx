@@ -7,7 +7,7 @@ export default function Hero() {
     const [wordIndex, setWordIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [charIndex, setCharIndex] = useState(0);
-    
+
     // Typewriter logic
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -75,7 +75,7 @@ export default function Hero() {
                             </span>
                         </h1>
                         <p className="hero-desc reveal" style={{"--d": "200ms"} as any}>
-                            Full-stack Developer spesialis <strong>Laravel</strong> & <strong>API Architecture</strong> — fokus pada performa, keamanan, dan skalabilitas untuk pertumbuhan bisnis Anda.
+                            Full-stack Developer spesialis Laravel & API Architecture — fokus pada performa, keamanan, dan skalabilitas untuk pertumbuhan bisnis Anda.
                         </p>
                         <div className="hero-cta reveal" style={{"--d": "300ms"} as any}>
                             <a href="https://wa.me/6285173329189" target="_blank" className="btn btn-primary">

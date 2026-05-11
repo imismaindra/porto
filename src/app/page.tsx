@@ -5,6 +5,7 @@ import ProjectList from "@/components/ProjectList";
 import WhyMe from "@/components/WhyMe";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
@@ -17,22 +18,42 @@ export default function Home() {
         <WhyMe />
         <Testimonials />
         
-        {/* FINAL CTA */}
+        {/* FINAL CTA / CONTACT */}
         <section id="contact" className="final-cta">
           <div className="cta-bg-mesh"></div>
           <div className="container">
-            <div className="cta-content reveal">
-              <span className="kicker">Let's build something</span>
-              <h2>Siap Diskusi<br/><em>Proyek Anda?</em></h2>
-              <p>Respon maksimal 24 jam. Mari bangun solusi digital yang tepat untuk bisnis Anda.</p>
-              <a href="https://wa.me/6285173329189" target="_blank" className="btn btn-primary btn-lg">
-                <i className="fab fa-whatsapp"></i> Hubungi Saya Sekarang
-              </a>
+            <div className="contact-grid">
+              <div className="cta-content reveal">
+                <span className="kicker">Let's build something</span>
+                <h2>Siap Diskusi<br/><em>Proyek Anda?</em></h2>
+                <p>Respon maksimal 24 jam. Mari bangun solusi digital yang tepat untuk bisnis Anda.</p>
+                <div className="contact-info-list">
+                  <div className="info-item">
+                    <i className="fab fa-whatsapp"></i>
+                    <div>
+                      <span>WhatsApp</span>
+                      <p>+62 851-7332-9189</p>
+                    </div>
+                  </div>
+                  <div className="info-item">
+                    <i className="fas fa-envelope"></i>
+                    <div>
+                      <span>Email</span>
+                      <p>imismaindra@gmail.com</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="reveal" style={{ transitionDelay: '0.2s' }}>
+                <ContactForm />
+              </div>
             </div>
           </div>
         </section>
       </main>
       <Footer />
+
     </>
   );
 }

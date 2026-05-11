@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const menuItems = [
   { label: 'Dashboard', path: '/admin/dashboard', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
@@ -18,7 +19,16 @@ const menuItems = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
+
+  const handleLogout = async () => {
+    if (confirm('Are you sure you want to logout?')) {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      router.push('/login');
+      router.refresh();
+    }
+  };
 
   return (
     <aside className="sidebar" style={{ width: collapsed ? 'var(--sidebar-collapsed-width)' : 'var(--sidebar-width)' }}>
@@ -68,19 +78,22 @@ export default function Sidebar() {
       </nav>
 
       <div style={{ padding: '1rem', borderTop: '1px solid var(--border-primary)' }}>
-        <button style={{ 
-          width: '100%', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: collapsed ? 'center' : 'flex-start',
-          padding: '0.75rem',
-          borderRadius: 'var(--radius-sm)',
-          border: 'none',
-          background: 'rgba(239, 68, 68, 0.05)',
-          color: 'var(--accent-danger)',
-          cursor: 'pointer',
-          transition: 'all 0.2s'
-        }}>
+        <button 
+          onClick={handleLogout}
+          style={{ 
+            width: '100%', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: collapsed ? 'center' : 'flex-start',
+            padding: '0.75rem',
+            borderRadius: 'var(--radius-sm)',
+            border: 'none',
+            background: 'rgba(239, 68, 68, 0.05)',
+            color: 'var(--accent-danger)',
+            cursor: 'pointer',
+            transition: 'all 0.2s'
+          }}
+        >
           <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
           </svg>

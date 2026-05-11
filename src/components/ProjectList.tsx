@@ -15,6 +15,7 @@ interface Project {
     impact_label_2: string;
     thumb_icon: string;
     thumb_color: string;
+    image: string;
     detail_link: string;
 }
 
@@ -70,8 +71,12 @@ export default function ProjectList() {
 
                         return (
                             <div className="pj-card reveal visible" key={pj.id} style={{'--d': `${i * 100}ms`} as any}>
-                                <div className={`pj-thumb pj-thumb--${pj.thumb_color || 'teal'}`}>
-                                    <i className={pj.thumb_icon || 'fas fa-code'}></i>
+                                <div className={`pj-thumb pj-thumb--${pj.thumb_color || 'teal'}`} style={pj.image ? { padding: 0, overflow: 'hidden' } : {}}>
+                                    {pj.image ? (
+                                        <img src={pj.image} alt={pj.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    ) : (
+                                        <i className={pj.thumb_icon || 'fas fa-code'}></i>
+                                    )}
                                     <span className="pj-badge">{pj.badge}</span>
                                 </div>
                                 <div className="pj-body">
