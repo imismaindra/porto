@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 };
 
 import ScrollReveal from "@/components/ScrollReveal";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 
 export default function RootLayout({
   children,
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body>
         <div className="grain"></div>
         <ScrollReveal />
+        <AnalyticsTracker />
         {children}
       </body>
     </html>

@@ -106,3 +106,14 @@ CREATE TABLE IF NOT EXISTS messages (
     status ENUM('new', 'read', 'replied') DEFAULT 'new',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Table: Visitor Logs
+CREATE TABLE IF NOT EXISTS visitor_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ip_address VARCHAR(45),
+    user_agent TEXT,
+    page_path VARCHAR(255),
+    session_id VARCHAR(100),
+    referer TEXT,
+    visited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
