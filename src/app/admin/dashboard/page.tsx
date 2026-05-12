@@ -12,17 +12,37 @@ import {
     HardDrive,
     Globe,
     Cpu,
-    ArrowRight
+    ArrowRight,
+    Eye
 } from 'lucide-react';
 
-const stats = [
-    { label: 'Total Projects', value: '12', icon: <Briefcase size={24} />, color: '#3b82f6', trend: '+2 this month' },
-    { label: 'Active Services', value: '6', icon: <Zap size={24} />, color: '#10b981', trend: 'Stable' },
-    { label: 'New Messages', value: '4', icon: <MessageSquare size={24} />, color: '#f59e0b', trend: 'Requires action' },
-    { label: 'Testimonials', value: '8', icon: <Users size={24} />, color: '#8b5cf6', trend: '+1 this week' },
-];
-
 export default function DashboardAdmin() {
+    const [statsData, setStatsData] = React.useState<any>(null);
+    const [loading, setLoading] = React.useState(true);
+
+    React.useEffect(() => {
+        const fetchStats = async () => {
+            try {
+                const response = await fetch('/api/analytics/stats');
+                const data = await response.json();
+                setStatsData(data);
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchStats();
+    }, []);
+
+    const dynamicStats = [
+        { label: 'Unique Visitors', value: statsData?.uniqueVisitors?.toString() || '0', icon: <Users size={24} />, color: '#3b82f6', trend: `+${statsData?.todayUnique || 0} today` },
+        { label: 'Total Page Views', value: statsData?.totalViews?.toString() || '0', icon: <Eye size={24} />, color: '#10b981', trend: `${statsData?.todayViews || 0} today` },
+        { label: 'New Messages', value: '4', icon: <MessageSquare size={24} />, color: '#f59e0b', trend: 'Requires action' },
+        { label: 'Testimonials', value: '8', icon: <Users size={24} />, color: '#8b5cf6', trend: '+1 this week' },
+    ];
+
     return (
         <div className="admin-container">
             <div className="admin-header">
@@ -40,14 +60,14 @@ export default function DashboardAdmin() {
 
             {/* Stats Grid */}
             <div className="stats-grid">
-                {stats.map((stat) => (
+                {dynamicStats.map((stat) => (
                     <div key={stat.label} className="stat-card glass">
                         <div className="stat-icon-box" style={{ background: `${stat.color}15`, color: stat.color }}>
                             {stat.icon}
                         </div>
                         <div className="stat-info">
                             <p className="stat-label">{stat.label}</p>
-                            <h3 className="stat-value">{stat.value}</h3>
+                            <h3 className="stat-value">{loading ? '...' : stat.value}</h3>
                             <p className="stat-trend">
                                 <ArrowUpRight size={14} />
                                 <span>{stat.trend}</span>
@@ -68,22 +88,23 @@ export default function DashboardAdmin() {
                         <button className="text-link">View All</button>
                     </div>
                     <div className="activity-list">
-                        {[
-                            { title: 'Project Updated', desc: 'E-Commerce Mobile App', time: '2 hours ago', type: 'update' },
-                            { title: 'New Message', desc: 'From John Doe regarding Project X', time: '5 hours ago', type: 'message' },
-                            { title: 'Service Added', desc: 'Cloud Infrastructure Management', time: 'Yesterday', type: 'add' },
-                            { title: 'Profile Sync', desc: 'Updated Hero Section content', time: '2 days ago', type: 'system' },
-                        ].map((item, i) => (
-                            <div key={i} className="activity-item">
-                                <div className={`activity-indicator ${item.type}`}></div>
-                                <div className="activity-content">
-                                    <p className="activity-title">{item.title}</p>
-                                    <p className="activity-desc">{item.desc}</p>
-                                    <p className="activity-time">{item.time}</p>
+                        {loading ? (
+                            <div className="activity-item">Loading activity...</div>
+                        ) : statsData?.recentVisitors?.length > 0 ? (
+                            statsData.recentVisitors.map((visitor: any, i: number) => (
+                                <div key={i} className="activity-item">
+                                    <div className={`activity-indicator update`}></div>
+                                    <div className="activity-content">
+                                        <p className="activity-title">New Visit: {visitor.page_path}</p>
+                                        <p className="activity-desc">IP: {visitor.ip_address}</p>
+                                        <p className="activity-time">{new Date(visitor.visited_at).toLocaleString()}</p>
+                                    </div>
+                                    <ArrowRight size={14} className="activity-arrow" />
                                 </div>
-                                <ArrowRight size={14} className="activity-arrow" />
-                            </div>
-                        ))}
+                            ))
+                        ) : (
+                            <div className="activity-item">No recent activity.</div>
+                        )}
                     </div>
                 </div>
 
