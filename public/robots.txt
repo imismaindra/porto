@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap location — penting untuk crawler
+Sitemap: https://ismaindra.my.id/sitemap.xml
+
+# Block assets yang tidak perlu diindex
+Disallow: /images/
+Disallow: /css/
+Disallow: /js/
+
+# Crawl-delay untuk mengurangi beban server (opsional)
+Crawl-delay: 1

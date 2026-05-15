@@ -16,7 +16,17 @@ export default function Services() {
         fetch('/api/services')
             .then(res => res.json())
             .then(data => {
-                setServices(data);
+                if (Array.isArray(data)) {
+                    setServices(data);
+                } else {
+                    console.error('Expected array from /api/services, got:', data);
+                    setServices([]);
+                }
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('Failed to fetch services:', err);
+                setServices([]);
                 setLoading(false);
             });
     }, []);

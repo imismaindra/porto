@@ -75,29 +75,29 @@ export default function Hero() {
                             </span>
                         </h1>
                         <p className="hero-desc reveal" style={{"--d": "200ms"} as any}>
-                            Full-stack Developer spesialis Laravel & API Architecture — fokus pada performa, keamanan, dan skalabilitas untuk pertumbuhan bisnis Anda.
+                            Full-stack Developer spesialis <strong>Laravel & REST API di Surabaya</strong> — membangun website bisnis yang scalable, aman, dan berorientasi ROI.
                         </p>
                         <div className="hero-cta reveal" style={{"--d": "300ms"} as any}>
-                            <a href="https://wa.me/6285173329189" target="_blank" className="btn btn-primary">
-                                <i className="fab fa-whatsapp"></i> Konsultasi Gratis
+                            <a href="https://wa.me/6285173329189" target="_blank" className="btn btn-primary" rel="nofollow">
+                                <i className="fab fa-whatsapp"></i> Konsultasi Gratis Web Dev
                             </a>
                             <a href="#projects" className="btn btn-ghost">
-                                Lihat Portofolio <i className="fas fa-arrow-right"></i>
+                                Portofolio Proyek Laravel <i className="fas fa-arrow-right"></i>
                             </a>
                         </div>
                         <div className="hero-stats reveal" style={{"--d": "400ms"} as any} ref={statsRef}>
                             <div className="stat">
-                                <span className="stat-num" data-target="4">0</span><span className="stat-plus">+</span>
+                                <span className="stat-num" data-target="4">4</span><span className="stat-plus">+</span>
                                 <p>Tahun Pengalaman</p>
                             </div>
                             <div className="stat-divider"></div>
                             <div className="stat">
-                                <span className="stat-num" data-target="15">0</span><span className="stat-plus">+</span>
+                                <span className="stat-num" data-target="15">15</span><span className="stat-plus">+</span>
                                 <p>Proyek Berhasil</p>
                             </div>
                             <div className="stat-divider"></div>
                             <div className="stat">
-                                <span className="stat-num" data-target="100">0</span><span className="stat-plus">%</span>
+                                <span className="stat-num" data-target="100">100</span><span className="stat-plus">%</span>
                                 <p>Client Satisfied</p>
                             </div>
                         </div>
@@ -105,7 +105,15 @@ export default function Hero() {
                     <div className="hero-visual reveal" style={{"--d": "500ms"} as any}>
                         <div className="hero-photo-wrap">
                             <div className="hero-photo-ring"></div>
-                            <img src="/images/profile2.png" alt="Ahmad Maulana Ismaindra" className="hero-photo" />
+                            <img 
+                                src="/images/profile2.png" 
+                                alt="Ahmad Maulana Ismaindra — Full-stack Laravel Developer Surabaya" 
+                                className="hero-photo"
+                                width="380"
+                                height="460"
+                                loading="eager"
+                                fetchPriority="high"
+                            />
                             <div className="hero-photo-tag">
                                 <i className="fas fa-code"></i>
                                 <span>Laravel Expert</span>

@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-   <url>
-      <loc>https://ismaindra.my.id/</loc>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Homepage / Portfolio -->
+  <url>
+    <loc>https://ismaindra.my.id/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!--
+    CATATAN: Jika kamu menambah halaman baru di masa depan
+    (misalnya /blog, /projects/nama-proyek), tambahkan di sini.
+    
+    Contoh:
+    <url>
+      <loc>https://ismaindra.my.id/projects/lookAtHistory</loc>
       <lastmod>2026-05-15</lastmod>
-   </url>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
+  -->
+
 </urlset>

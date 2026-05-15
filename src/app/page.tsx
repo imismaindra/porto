@@ -25,16 +25,16 @@ export default function Home() {
             <div className="contact-grid">
               <div className="cta-content reveal">
                 <span className="kicker">Let's build something</span>
-                <h2>Siap Diskusi<br/><em>Proyek Anda?</em></h2>
-                <p>Respon maksimal 24 jam. Mari bangun solusi digital yang tepat untuk bisnis Anda.</p>
-                <div className="contact-info-list">
-                  <div className="info-item">
+                <h2 className="reveal" style={{"--d": "100ms"} as any}>Konsultasi Gratis dengan<br/><em>Web Developer Surabaya</em></h2>
+                <p className="reveal" style={{"--d": "150ms"} as any}>Respon maksimal 24 jam. Mari bangun solusi digital yang tepat untuk bisnis Anda.</p>
+                <div className="contact-info-list reveal" style={{"--d": "200ms"} as any}>
+                  <a href="https://wa.me/6285173329189" className="info-item" rel="nofollow" target="_blank">
                     <i className="fab fa-whatsapp"></i>
                     <div>
-                      <span>WhatsApp</span>
+                      <span>WhatsApp (Konsultasi Gratis)</span>
                       <p>+62 851-7332-9189</p>
                     </div>
-                  </div>
+                  </a>
                   <div className="info-item">
                     <i className="fas fa-envelope"></i>
                     <div>

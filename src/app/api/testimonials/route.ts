@@ -7,6 +7,7 @@ export async function GET() {
         const [rows] = await pool.query('SELECT * FROM testimonials ORDER BY created_at DESC');
         return NextResponse.json(rows);
     } catch (error) {
+        console.error('API Error (Testimonials):', error);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }

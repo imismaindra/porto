@@ -21,7 +21,17 @@ export default function Testimonials() {
         fetch('/api/testimonials')
             .then(res => res.json())
             .then(data => {
-                setTestimonials(data);
+                if (Array.isArray(data)) {
+                    setTestimonials(data);
+                } else {
+                    console.error('Expected array from /api/testimonials, got:', data);
+                    setTestimonials([]);
+                }
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('Failed to fetch testimonials:', err);
+                setTestimonials([]);
                 setLoading(false);
             });
     }, []);

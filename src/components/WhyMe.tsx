@@ -5,7 +5,7 @@ export default function WhyMe() {
                 <div className="section-label reveal">
                     <span className="kicker">Mengapa Saya?</span>
                 </div>
-                <h2 className="section-title light reveal">Kode Berkualitas,<br/><em>Berorientasi Bisnis</em></h2>
+                <h2 className="section-title light reveal">Mengapa Pilih <em>Web Developer Laravel</em> Surabaya Ini?</h2>
                 <div className="why-grid">
                     <div className="why-card reveal">
                         <div className="why-icon"><i className="fas fa-code"></i></div>

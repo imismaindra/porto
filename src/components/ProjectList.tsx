@@ -28,14 +28,24 @@ export default function ProjectList() {
         fetch('/api/projects')
             .then(res => res.json())
             .then(data => {
-                setProjects(data);
+                if (Array.isArray(data)) {
+                    setProjects(data);
+                } else {
+                    console.error('Expected array from /api/projects, got:', data);
+                    setProjects([]);
+                }
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('Failed to fetch projects:', err);
+                setProjects([]);
                 setLoading(false);
             });
     }, []);
 
-    const filteredProjects = filter === 'all' 
-        ? projects 
-        : projects.filter(p => p.category === filter);
+    const filteredProjects = Array.isArray(projects) 
+        ? (filter === 'all' ? projects : projects.filter(p => p.category === filter))
+        : [];
 
     if (loading) return <p style={{textAlign: 'center', color: 'var(--muted)'}}>Memuat proyek...</p>;
 

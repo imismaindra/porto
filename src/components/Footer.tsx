@@ -15,19 +15,21 @@ export default function Footer() {
                     <div className="footer-nav">
                         <h4>Navigasi</h4>
                         <ul>
-                            <li><a href="#top">Beranda</a></li>
-                            <li><a href="#services">Layanan</a></li>
-                            <li><a href="#projects">Proyek</a></li>
-                            <li><a href="#contact">Kontak</a></li>
+                            <li><a href="#top">Beranda Portfolio</a></li>
+                            <li><a href="#services">Layanan Web Development</a></li>
+                            <li><a href="#projects">Portofolio Proyek Laravel</a></li>
+                            <li><a href="#contact">Kontak Web Developer</a></li>
                         </ul>
                     </div>
                     <div className="footer-contact">
                         <h4>Kontak</h4>
-                        <ul>
-                            <li>imismaindra@gmail.com</li>
-                            <li>+62 851-7332-9189</li>
-                            <li>Surabaya, Indonesia</li>
-                        </ul>
+                        <address style={{ fontStyle: 'normal', color: 'var(--muted)', fontSize: '0.9rem', lineHeight: '1.8' }}>
+                            <strong>Ahmad Maulana Ismaindra</strong><br />
+                            Full-stack Web Developer<br />
+                            <span>Surabaya, Jawa Timur, Indonesia</span><br />
+                            <a href="tel:+6285173329189" style={{ color: 'var(--primary)' }}>+62 851-7332-9189</a><br />
+                            <a href="mailto:imismaindra@gmail.com" style={{ color: 'var(--primary)' }}>imismaindra@gmail.com</a>
+                        </address>
                     </div>
                 </div>
                 <div className="footer-bottom">
